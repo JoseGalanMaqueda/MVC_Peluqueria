@@ -1,4 +1,4 @@
-package es.JoseGalan.TestPeluqueria;
+package es.JoseGalan.Test;
 
 public class TestPeluqueria
 {
