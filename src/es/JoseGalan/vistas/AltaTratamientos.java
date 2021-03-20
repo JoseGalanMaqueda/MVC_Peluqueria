@@ -32,7 +32,7 @@ public class AltaTratamientos
 			frmAltaTratamientos.add(txtNombreAltaTratamiento);
 			frmAltaTratamientos.add(lblPrecioAltaTratamiento);
 			for (String d : precios) {
-				listaPrecios.add((d));
+				listaPrecios.add(d);
 			}
 			listaPrecios.setBackground(Color.WHITE);
 			frmAltaTratamientos.add(listaPrecios);
