@@ -7,6 +7,7 @@ import java.awt.event.WindowListener;
 
 import es.JoseGalanMaqueda.modelo.ModeloUsuarios;
 import es.JoseGalanMaqueda.vistas.Login;
+import es.JoseGalanMaqueda.vistas.Principal;
 
 public class ControladorLogin implements WindowListener, ActionListener {
 	
@@ -64,7 +65,8 @@ public class ControladorLogin implements WindowListener, ActionListener {
 		else if (e.getSource().equals(this.login.btnAcceder)) {
 			int tipo = this.modeloUsuarios.comprobacionUsuario(this.login.txtNombreUsuario.getText(), this.login.txtPassword.getText());
 			if (tipo == 1 || tipo == 0) {
-				System.out.println(tipo);
+				new Principal(tipo);
+				this.login.frmVentanaLogin.setVisible(false);
 			}else {
 				this.login.DialogoError();
 				this.login.lblError.setText("Datos Incorrectos");
