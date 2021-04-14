@@ -16,8 +16,10 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 	public ControladorPrincipal(Principal principal)
 	{
 		this.vistaPrincipal = principal;
+		
 		this.vistaPrincipal.ventanaPrincipal.addWindowListener(this);
-		this.vistaPrincipal.mniAltaCitas.addActionListener(this);
+		
+		this.vistaPrincipal.mniAltaCliente.addActionListener(this);
 		this.vistaPrincipal.mniBajaCliente.addActionListener(this);
 		this.vistaPrincipal.mniModificacionCliente.addActionListener(this);
 		this.vistaPrincipal.mniConsultaCliente.addActionListener(this);

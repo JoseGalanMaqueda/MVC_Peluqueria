@@ -65,7 +65,8 @@ public class ControladorLogin implements WindowListener, ActionListener {
 		else if (e.getSource().equals(this.login.btnAcceder)) {
 			int tipo = this.modeloUsuarios.comprobacionUsuario(this.login.txtNombreUsuario.getText(), this.login.txtPassword.getText());
 			if (tipo == 1 || tipo == 0) {
-				new Principal(tipo);
+				Principal principal = new Principal(tipo);
+				new ControladorPrincipal(principal);
 				this.login.frmVentanaLogin.setVisible(false);
 			}else {
 				this.login.DialogoError();
