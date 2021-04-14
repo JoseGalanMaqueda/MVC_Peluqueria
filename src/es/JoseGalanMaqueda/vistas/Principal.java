@@ -13,10 +13,10 @@ import java.awt.TextArea;
 public class Principal
 {
 	//===================================== VENTANA PRINCIPAL ==================================
-	Frame ventanaPrincipal = new Frame("Peluqueria Forever Young");
+	public Frame ventanaPrincipal = new Frame("Peluqueria Forever Young");
 	Label lblProximasCitas = new Label("Proximas Citas:");
 	TextArea txaCitasHoy = new TextArea(16,54);
-	Button btnActualizar = new Button("Actualizar Citas");
+	public Button btnActualizar = new Button("Actualizar Citas");
 	Color clFondo = new Color(204,229,255);
 
 	//===================================== MENU PRINCIPAL =====================================
@@ -24,26 +24,26 @@ public class Principal
 
 	// ==================================== MENU CLIENTES ======================================
 	Menu mnuCliente = new Menu("Clientes");
-	MenuItem mniAltaCliente = new MenuItem("Nuevo Cliente");
-	MenuItem mniBajaCliente = new MenuItem("Eliminar Cliente");
-	MenuItem mniModificacionCliente = new MenuItem("Editar Cliente");
-	MenuItem mniConsultaCliente = new MenuItem("Consultar Clientes");
+	public MenuItem mniAltaCliente = new MenuItem("Nuevo Cliente");
+	public MenuItem mniBajaCliente = new MenuItem("Eliminar Cliente");
+	public MenuItem mniModificacionCliente = new MenuItem("Editar Cliente");
+	public MenuItem mniConsultaCliente = new MenuItem("Consultar Clientes");
 
 	// =================================== MENU TRATAMIENTOS ===================================
 	Menu mnuTratamientos = new Menu("Tratamientos");
-	MenuItem mniAltaTratamiento = new MenuItem("Nuevo Tratamientos");
-	MenuItem mniBajaTratamiento = new MenuItem("Eliminar Tratamiento");
-	MenuItem mniModificacionTratamiento = new MenuItem("Editar Tratamiento");
-	MenuItem mniConsultaTratamientos = new MenuItem("Consultar Tratamiento");
+	public MenuItem mniAltaTratamiento = new MenuItem("Nuevo Tratamientos");
+	public MenuItem mniBajaTratamiento = new MenuItem("Eliminar Tratamiento");
+	public MenuItem mniModificacionTratamiento = new MenuItem("Editar Tratamiento");
+	public MenuItem mniConsultaTratamientos = new MenuItem("Consultar Tratamiento");
 
 	// =================================== MENU CITAS ==========================================
 	Menu mnuCitas = new Menu("Citas");
-	MenuItem mniAltaCitas = new MenuItem("Nueva Cita");
-	MenuItem mniConsultaCitas = new MenuItem("Consultar Citas");
+	public MenuItem mniAltaCitas = new MenuItem("Nueva Cita");
+	public MenuItem mniConsultaCitas = new MenuItem("Consultar Citas");
 
 	// ================================== MENU ASIGNAR TRATAMIENTOS ===================================
 	Menu mnuAsignarTratamientos = new Menu("Asignacion Tratamientos");
-	MenuItem mniConsultarAsignacion = new MenuItem("Consultar Asignaciones");
+	public MenuItem mniConsultarAsignacion = new MenuItem("Consultar Asignaciones");
 
 	public Principal(int tipo) {
 		ventanaPrincipal.setSize(450, 400);
