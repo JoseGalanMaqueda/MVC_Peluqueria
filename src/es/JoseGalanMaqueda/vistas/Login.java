@@ -2,6 +2,8 @@ package es.JoseGalanMaqueda.vistas;
 
 import java.awt.Button;
 import java.awt.Color;
+import java.awt.Dialog;
+import java.awt.FlowLayout;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.Label;
@@ -10,13 +12,13 @@ import java.awt.TextField;
 
 public class Login
 {
-	Frame frmVentanaLogin = new Frame("Login");
+	public Frame frmVentanaLogin = new Frame("Login");
 	Label lblnombreUsuario = new Label("Usuario:");
 	Label lblpassword = new Label("Contraseña:");
-	TextField txtNombreUsuario = new TextField(15);
-	TextField txtPassword = new TextField(15);
-	Button btnAcceder = new Button("Acceder");
-	Button btnLimpiar = new Button("Limpiar");
+	public TextField txtNombreUsuario = new TextField(15);
+	public TextField txtPassword = new TextField(15);
+	public Button btnAcceder = new Button("Acceder");
+	public Button btnLimpiar = new Button("Limpiar");
 	Panel pnlUno = new Panel();
 	Panel pnlDos = new Panel();
 	Panel pnlTres = new Panel();
@@ -24,7 +26,11 @@ public class Login
 	Panel pnlCinco = new Panel();
 	Panel pnlSeis = new Panel();
 	Color colorPrincipal = new Color(204,229,255);
-	
+
+	// =============================== DIALOGO ERROR =============================================
+	public Dialog dlgError = new Dialog(frmVentanaLogin, "Error", true);
+	public Label lblError = new Label("Datos incorrectos");
+
 	public Login() 
 	{
 		frmVentanaLogin.setLayout(new GridLayout(3,2));
@@ -49,5 +55,15 @@ public class Login
 		frmVentanaLogin.setLocationRelativeTo(null);
 		frmVentanaLogin.setVisible(true);
 	}
-	
+
+	public void DialogoError() {
+		dlgError.setLayout(new FlowLayout());
+		dlgError.setSize(160, 120);
+		dlgError.add(lblError);
+		dlgError.setBackground(colorPrincipal);
+		dlgError.setResizable(false);
+		dlgError.setLocationRelativeTo(null);
+		dlgError.setVisible(true);
+	}
+
 }
