@@ -1,4 +1,4 @@
-package es.JoseGalan.vistas;
+package es.JoseGalanMaqueda.vistas;
 
 import java.awt.Button;
 import java.awt.Color;

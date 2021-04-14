@@ -1,7 +1,7 @@
-package es.JoseGalan.Test;
+package es.JoseGalanMaqueda.Test;
 
-import es.JoseGalan.vistas.Login;
 import es.JoseGalanMaqueda.modelo.ModeloUsuarios;
+import es.JoseGalanMaqueda.vistas.Login;
 
 public class TestPeluqueria
 {
