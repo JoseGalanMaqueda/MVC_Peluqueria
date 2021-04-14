@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import es.JoseGalanMaqueda.modelo.ModeloCliente;
 import es.JoseGalanMaqueda.vistas.AltaClientes;
 import es.JoseGalanMaqueda.vistas.AltaTratamientos;
 import es.JoseGalanMaqueda.vistas.Principal;
@@ -64,7 +65,9 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 	{
 		if (arg0.getSource().equals(this.vistaPrincipal.mniAltaCliente))
 		{
-			new AltaClientes();
+			AltaClientes altaClientes = new AltaClientes();
+			ModeloCliente modeloClientes = new ModeloCliente();
+			new ControladorClientes(altaClientes, modeloClientes);
 		}
 		else if (arg0.getSource().equals(this.vistaPrincipal.mniAltaTratamiento))
 		{
