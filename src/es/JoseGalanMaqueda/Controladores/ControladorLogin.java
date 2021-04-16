@@ -30,11 +30,11 @@ public class ControladorLogin implements WindowListener, ActionListener {
 	@Override
 	public void windowClosing(WindowEvent e) {
 		
-		if (this.login.frmVentanaLogin.isActive()) 
+		if (login.frmVentanaLogin.isActive()) 
 		{
-			this.login.frmVentanaLogin.setVisible(false);
-		}else if (this.login.dlgError.isActive()) {
-			this.login.dlgError.setVisible(false);
+			login.frmVentanaLogin.setVisible(false);
+		}else if (login.dlgError.isActive()) {
+			login.dlgError.setVisible(false);
 		}
 	}
 
@@ -55,22 +55,22 @@ public class ControladorLogin implements WindowListener, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(this.login.btnLimpiar)) {
-			this.login.txtNombreUsuario.selectAll();
-			this.login.txtNombreUsuario.setText("");
-			this.login.txtPassword.selectAll();
-			this.login.txtPassword.setText("");
-			this.login.txtNombreUsuario.requestFocus();
+		if (e.getSource().equals(login.btnLimpiar)) {
+			login.txtNombreUsuario.selectAll();
+			login.txtNombreUsuario.setText("");
+			login.txtPassword.selectAll();
+			login.txtPassword.setText("");
+			login.txtNombreUsuario.requestFocus();
 		}
-		else if (e.getSource().equals(this.login.btnAcceder)) {
-			int tipo = this.modeloUsuarios.comprobacionUsuario(this.login.txtNombreUsuario.getText(), this.login.txtPassword.getText());
+		else if (e.getSource().equals(login.btnAcceder)) {
+			int tipo = modeloUsuarios.comprobacionUsuario(login.txtNombreUsuario.getText(), login.txtPassword.getText());
 			if (tipo == 1 || tipo == 0) {
 				Principal principal = new Principal(tipo);
 				new ControladorPrincipal(principal);
-				this.login.frmVentanaLogin.setVisible(false);
+				login.frmVentanaLogin.setVisible(false);
 			}else {
-				this.login.DialogoError();
-				this.login.lblError.setText("Datos Incorrectos");
+				login.DialogoError();
+				login.lblError.setText("Datos Incorrectos");
 			}
 		}
 	}

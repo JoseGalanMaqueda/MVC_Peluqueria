@@ -42,7 +42,7 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 	@Override
 	public void windowClosing(WindowEvent arg0)
 	{
-		if (this.vistaPrincipal.ventanaPrincipal.isActive())
+		if (vistaPrincipal.ventanaPrincipal.isActive())
 		{
 			System.exit(0);
 		}
@@ -63,13 +63,13 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		if (arg0.getSource().equals(this.vistaPrincipal.mniAltaCliente))
+		if (arg0.getSource().equals(vistaPrincipal.mniAltaCliente))
 		{
 			AltaClientes altaClientes = new AltaClientes();
 			ModeloCliente modeloClientes = new ModeloCliente();
 			new ControladorClientes(altaClientes, modeloClientes);
 		}
-		else if (arg0.getSource().equals(this.vistaPrincipal.mniAltaTratamiento))
+		else if (arg0.getSource().equals(vistaPrincipal.mniAltaTratamiento))
 		{
 			new AltaTratamientos();
 		}
