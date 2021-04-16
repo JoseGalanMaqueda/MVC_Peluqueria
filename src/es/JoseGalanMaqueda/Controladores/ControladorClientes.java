@@ -36,15 +36,15 @@ public class ControladorClientes implements WindowListener, ActionListener, Item
 	@Override
 	public void windowClosing(WindowEvent e) {
 		
-		if (this.altaCliente.frmAltaClientes.isActive()) 
+		if (altaCliente.frmAltaClientes.isActive()) 
 		{
-			this.altaCliente.frmAltaClientes.setVisible(false);
-		}else if (this.altaCliente.dlgErrorInsertarCliente.isActive()) {
-			this.altaCliente.dlgErrorInsertarCliente.setVisible(false);
-		}else if (this.altaCliente.dlgClienteInsertado.isActive())
+			altaCliente.frmAltaClientes.setVisible(false);
+		}else if (altaCliente.dlgErrorInsertarCliente.isActive()) {
+			altaCliente.dlgErrorInsertarCliente.setVisible(false);
+		}else if (altaCliente.dlgClienteInsertado.isActive())
 		{
-			this.altaCliente.dlgClienteInsertado.setVisible(false);
-			this.altaCliente.frmAltaClientes.setVisible(false);
+			altaCliente.dlgClienteInsertado.setVisible(false);
+			altaCliente.frmAltaClientes.setVisible(false);
 		}
 	}
 
@@ -84,23 +84,26 @@ public class ControladorClientes implements WindowListener, ActionListener, Item
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		if (arg0.getSource().equals(this.altaCliente.btnAltaClientes))
+		if (arg0.getSource().equals(altaCliente.btnAltaClientes))
 		{
-			this.altaCliente.creacionDialogoNotificacion(this.altaCliente.dlgErrorInsertarCliente, this.altaCliente.lblErrorAnadidoCliente);
-			if (this.modeloCliente.comprobacionDatosIntroducidos(this.altaCliente.txtNombreAltaClientes,
-					this.altaCliente.txtApellidosAltaClientes, this.altaCliente.txtDniAltaClientes, this.altaCliente.txtDireccionAltaClientes, eleccion))
+			altaCliente.creacionDialogoNotificacion(altaCliente.dlgErrorInsertarCliente, altaCliente.lblErrorAnadidoCliente);
+			if (modeloCliente.comprobacionDatosIntroducidos(altaCliente.txtNombreAltaClientes,
+					altaCliente.txtApellidosAltaClientes, altaCliente.txtDniAltaClientes, altaCliente.txtDireccionAltaClientes, eleccion))
 			{
-				if (this.modeloCliente.insertarDatosClientes(this.altaCliente.txtNombreAltaClientes, this.altaCliente.txtApellidosAltaClientes, this.altaCliente.txtDniAltaClientes, this.altaCliente.txtDireccionAltaClientes, eleccion))
+				if (modeloCliente.insertarDatosClientes(altaCliente.txtNombreAltaClientes, altaCliente.txtApellidosAltaClientes, altaCliente.txtDniAltaClientes, altaCliente.txtDireccionAltaClientes, eleccion))
 				{
-					this.altaCliente.creacionDialogoNotificacion(this.altaCliente.dlgClienteInsertado, this.altaCliente.lblAnadidoCorrectamente);
-					this.altaCliente.dlgClienteInsertado.setVisible(true);
+					altaCliente.creacionDialogoNotificacion(altaCliente.dlgClienteInsertado, altaCliente.lblAnadidoCorrectamente);
+					altaCliente.dlgClienteInsertado.setVisible(true);
 				}else {
-					this.altaCliente.lblErrorAnadidoCliente.setText("Error al Insertar");
-					this.altaCliente.dlgErrorInsertarCliente.setVisible(true);
+					altaCliente.lblErrorAnadidoCliente.setText("Error al Insertar");
+					altaCliente.dlgErrorInsertarCliente.setVisible(true);
 				}
 			}else {
-				this.altaCliente.dlgErrorInsertarCliente.setVisible(true);
+				altaCliente.dlgErrorInsertarCliente.setVisible(true);
 			}
+		}else if (arg0.getSource().equals(altaCliente.btnCancelarAltaClientes))
+		{
+			altaCliente.frmAltaClientes.setVisible(false);
 		}
 	}
 	
