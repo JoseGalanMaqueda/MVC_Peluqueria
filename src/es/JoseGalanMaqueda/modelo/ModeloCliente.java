@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class ModeloCliente
 {
@@ -34,8 +35,7 @@ public class ModeloCliente
 		try
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			sentencia = "INSERT INTO clientes VALUES (null, '"+ nombre.getText()+ "', '" +apellidos.getText() +
-					"', '"+ dni.getText() +"', '" + direccion.getText() + "', '" + eleccion +"');";
+			sentencia = "INSERT INTO clientes VALUES (null, '"+ nombre.getText()+ "', '" +apellidos.getText() + "', '"+ dni.getText() +"', '" + direccion.getText() + "', '" + eleccion +"');";
 			statement.executeUpdate(sentencia);
 
 		} catch (SQLException e1)
@@ -46,4 +46,27 @@ public class ModeloCliente
 		}
 		return insertado;
 	}
+	
+	public ArrayList<String> busquedaClientes(String nombre) {
+		ArrayList<String> clientes = new ArrayList<String>(); 
+		
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		
+		try {
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM clientes WHERE nombreCliente LIKE '"+nombre+"%'";
+			rs = statement.executeQuery(sentencia);
+			
+			while (rs.next()) {
+				clientes.add(rs.getInt("idCliente")+"-"+rs.getString("nombreCliente")+"-"+rs.getString("apellidosCliente")+"-"+rs.getString("dniCliente"));
+			}
+			
+		} catch (SQLException e) {
+			System.out.println("Error 3.- "+e.getMessage());
+		}
+		return clientes;
+	}
+	
+	
 }
