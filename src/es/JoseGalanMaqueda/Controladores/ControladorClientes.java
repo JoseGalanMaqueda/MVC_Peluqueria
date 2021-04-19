@@ -9,13 +9,16 @@ import java.awt.event.WindowListener;
 
 import es.JoseGalanMaqueda.modelo.ModeloCliente;
 import es.JoseGalanMaqueda.vistas.AltaClientes;
+import es.JoseGalanMaqueda.vistas.BajaClientes;
 
 public class ControladorClientes implements WindowListener, ActionListener, ItemListener
 {
 	AltaClientes altaCliente;
+	BajaClientes bajaClientes;
 	ModeloCliente modeloCliente;
 	String eleccion;
 	
+	// =============================== CONSTRUCTOR VISTA ALTA CLIENTES Y MODELO CLIENTES ===================================
 	public ControladorClientes(AltaClientes altaCliente, ModeloCliente modeloCliente) {
 		this.altaCliente = altaCliente;
 		this.modeloCliente = modeloCliente;
@@ -28,20 +31,33 @@ public class ControladorClientes implements WindowListener, ActionListener, Item
 		
 		this.altaCliente.dlgClienteInsertado.addWindowListener(this);
 		this.altaCliente.dlgErrorInsertarCliente.addWindowListener(this);
+		
 	}
 	
+	// =============================== CONSTRUCTOR VISTA BAJA CLIENTES Y MODELO CLIENTES ===================================
+	public ControladorClientes(BajaClientes bajaClientes, ModeloCliente modeloCliente) {
+		this.bajaClientes = bajaClientes;
+		this.modeloCliente = modeloCliente;
+		
+		this.bajaClientes.frmEliminarCliente.addWindowListener(this);
+		this.bajaClientes.btnBuscarCliente.addActionListener(this);
+		this.bajaClientes.btnEliminar.addActionListener(this);
+		this.bajaClientes.btnCancelarEliminar.addActionListener(this);
+	}
+	
+	//=============================== WINDOWS LISTENER  ===================================
 	@Override
 	public void windowOpened(WindowEvent e) {}
 
 	@Override
 	public void windowClosing(WindowEvent e) {
 		
-		if (altaCliente.frmAltaClientes.isActive()) 
+		if (altaCliente.frmAltaClientes.isActive()) // Ventana Alta Clientes 
 		{
 			altaCliente.frmAltaClientes.setVisible(false);
-		}else if (altaCliente.dlgErrorInsertarCliente.isActive()) {
+		}else if (altaCliente.dlgErrorInsertarCliente.isActive()) { // Dialogo Error Alta Clientes
 			altaCliente.dlgErrorInsertarCliente.setVisible(false);
-		}else if (altaCliente.dlgClienteInsertado.isActive())
+		}else if (altaCliente.dlgClienteInsertado.isActive()) // Dialogo Confirmacion Alta Clientes
 		{
 			altaCliente.dlgClienteInsertado.setVisible(false);
 			altaCliente.frmAltaClientes.setVisible(false);
@@ -63,6 +79,7 @@ public class ControladorClientes implements WindowListener, ActionListener, Item
 	@Override
 	public void windowDeactivated(WindowEvent e) {}
 
+	// =============================== ITEM LISTENER ===================================
 	@Override
 	public void itemStateChanged(ItemEvent e) {
 		if ("Hombre".equals(e.getItem()))
@@ -81,10 +98,11 @@ public class ControladorClientes implements WindowListener, ActionListener, Item
 		}
 	}
 
+	// =============================== ACTION LISTENER ===================================
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		if (arg0.getSource().equals(altaCliente.btnAltaClientes))
+		if (arg0.getSource().equals(altaCliente.btnAltaClientes)) // BOTON ALTA CLIENTES
 		{
 			altaCliente.creacionDialogoNotificacion(altaCliente.dlgErrorInsertarCliente, altaCliente.lblErrorAnadidoCliente);
 			if (modeloCliente.comprobacionDatosIntroducidos(altaCliente.txtNombreAltaClientes,
@@ -101,7 +119,7 @@ public class ControladorClientes implements WindowListener, ActionListener, Item
 			}else {
 				altaCliente.dlgErrorInsertarCliente.setVisible(true);
 			}
-		}else if (arg0.getSource().equals(altaCliente.btnCancelarAltaClientes))
+		}else if (arg0.getSource().equals(altaCliente.btnCancelarAltaClientes)) // BOTON CANCELAR ALTA CLIENTES
 		{
 			altaCliente.frmAltaClientes.setVisible(false);
 		}

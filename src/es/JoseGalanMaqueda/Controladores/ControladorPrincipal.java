@@ -6,8 +6,10 @@ import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
 import es.JoseGalanMaqueda.modelo.ModeloCliente;
+import es.JoseGalanMaqueda.modelo.ModeloTratamientos;
 import es.JoseGalanMaqueda.vistas.AltaClientes;
 import es.JoseGalanMaqueda.vistas.AltaTratamientos;
+import es.JoseGalanMaqueda.vistas.BajaClientes;
 import es.JoseGalanMaqueda.vistas.Principal;
 
 public class ControladorPrincipal implements ActionListener, WindowListener
@@ -69,9 +71,15 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 			ModeloCliente modeloClientes = new ModeloCliente();
 			new ControladorClientes(altaClientes, modeloClientes);
 		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniBajaCliente)) {
+			BajaClientes bajaClientes = new BajaClientes();
+			ModeloCliente modeloCliente = new ModeloCliente();
+			new ControladorClientes(bajaClientes, modeloCliente);
+		}
 		else if (arg0.getSource().equals(vistaPrincipal.mniAltaTratamiento))
 		{
-			new AltaTratamientos();
+			AltaTratamientos altaTratamientos = new AltaTratamientos();
+			ModeloTratamientos modeloTratamientos = new ModeloTratamientos();
 		}
 	}
 
