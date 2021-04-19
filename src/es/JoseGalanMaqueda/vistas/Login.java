@@ -14,7 +14,7 @@ public class Login
 {
 	public Frame frmVentanaLogin = new Frame("Login");
 	Label lblnombreUsuario = new Label("Usuario:");
-	Label lblpassword = new Label("ContraseÃ±a:");
+	Label lblpassword = new Label("Contraseña:");
 	public TextField txtNombreUsuario = new TextField(15);
 	public TextField txtPassword = new TextField(15);
 	public Button btnAcceder = new Button("Acceder");

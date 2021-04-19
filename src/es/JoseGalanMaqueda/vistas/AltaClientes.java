@@ -18,7 +18,7 @@ public class AltaClientes
 	Label lblNombreAltaCliente = new Label("Nombre:");
 	Label lblApellidosAltaClientes = new Label("Apellidos:");
 	Label lblDniAltaClientes = new Label("DNI:");
-	Label lblDireccionAltaClientes = new Label("DirecciÃ³n:");
+	Label lblDireccionAltaClientes = new Label("Dirección:");
 	Label lblSexoAltaClientes = new Label("Sexo:");
 	public TextField txtNombreAltaClientes = new TextField(20);
 	public TextField txtApellidosAltaClientes = new TextField(20);
@@ -45,7 +45,7 @@ public class AltaClientes
 
 	// ============================== DIALOGO NOTIFICACION ==================================
 	public Dialog dlgClienteInsertado = new Dialog(frmAltaClientes, "Operacion Correcta", true);
-	public Label lblAnadidoCorrectamente = new Label("Cliente aÃ±adido correctamente");
+	public Label lblAnadidoCorrectamente = new Label("Cliente añadido correctamente");
 
 	// ============================== DIALOGO NOTIFICACION ==================================
 	public Dialog dlgErrorInsertarCliente = new Dialog(frmAltaClientes, "Error", true);
