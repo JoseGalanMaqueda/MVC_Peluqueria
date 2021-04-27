@@ -8,8 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import es.josegalan.BaseDatos.BaseDatos;
-
 public class ModeloCliente
 {
 	// ================================ BASE DATOS ===============================================
