@@ -18,22 +18,22 @@ public class BajaClientes {
 	public Button btnEliminar = new Button("Eliminar");
 	public Button btnCancelarEliminar = new Button("Cancelar");
 	Label lblBuscarCliente = new Label("Buscar Cliente:");
-	TextField txtBuscarCliente = new TextField(12);
+	public TextField txtBuscarCliente = new TextField(12);
 	public Button btnBuscarCliente = new Button("Buscar");
 
 	// ========================= CONFIRMACION ELIMINAR ====================================================
 	public Frame frmConfirmacionEliminarCliente = new Frame("Confirmacion");
-	Label lblConfirmacionEliminarCliente = new Label("¿Estás seguro que deseas eliminarlo?");
+	public Label lblConfirmacionEliminarCliente = new Label("ï¿½Estï¿½s seguro que deseas eliminarlo?");
 	public Button btnSiConfirmacionElimiarCliente = new Button("Si");
 	public Button btnNoConfirmacionElimiarCliente = new Button("No");
 
 	// ============================== DIALOGO NOTIFICACION ==================================
-	public Dialog dlgCitasInsertado = new Dialog(frmConfirmacionEliminarCliente, "Operacion Correcta", true);
-	Label lblAnadidaCorrectamente = new Label("Cliente Eliminado Correctamente");
+	public Dialog dlgEliminadoCorrecto = new Dialog(frmConfirmacionEliminarCliente, "Operacion Correcta", true);
+	public Label lblEliminadoCorrectamente = new Label("Cliente Eliminado Correctamente");
 
 	// ============================== DIALOGO NOTIFICACION ==================================
-	public Dialog dlgErrorInsertarCita = new Dialog(frmConfirmacionEliminarCliente, "Error", true);
-	public Label lblErrorAnadidoCita = new Label("Error al Eliminar Cliente");
+	public Dialog dlgErrorEliminar = new Dialog(frmConfirmacionEliminarCliente, "Error", true);
+	public Label lblErrorEliminar = new Label("Error al Eliminar Cliente");
 	
 	public BajaClientes() 
 	{
