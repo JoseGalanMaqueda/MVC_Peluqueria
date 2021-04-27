@@ -9,17 +9,15 @@ import java.awt.event.WindowListener;
 
 import es.JoseGalanMaqueda.modelo.ModeloCliente;
 import es.JoseGalanMaqueda.vistas.AltaClientes;
-import es.JoseGalanMaqueda.vistas.BajaClientes;
 
-public class ControladorClientes implements WindowListener, ActionListener, ItemListener
+public class ControladorAltaClientes implements WindowListener, ActionListener, ItemListener
 {
 	AltaClientes altaCliente;
-	BajaClientes bajaClientes;
 	ModeloCliente modeloCliente;
 	String eleccion;
 	
 	// =============================== CONSTRUCTOR VISTA ALTA CLIENTES Y MODELO CLIENTES ===================================
-	public ControladorClientes(AltaClientes altaCliente, ModeloCliente modeloCliente) {
+	public ControladorAltaClientes(AltaClientes altaCliente, ModeloCliente modeloCliente) {
 		this.altaCliente = altaCliente;
 		this.modeloCliente = modeloCliente;
 		
@@ -32,17 +30,6 @@ public class ControladorClientes implements WindowListener, ActionListener, Item
 		this.altaCliente.dlgClienteInsertado.addWindowListener(this);
 		this.altaCliente.dlgErrorInsertarCliente.addWindowListener(this);
 		
-	}
-	
-	// =============================== CONSTRUCTOR VISTA BAJA CLIENTES Y MODELO CLIENTES ===================================
-	public ControladorClientes(BajaClientes bajaClientes, ModeloCliente modeloCliente) {
-		this.bajaClientes = bajaClientes;
-		this.modeloCliente = modeloCliente;
-		
-		this.bajaClientes.frmEliminarCliente.addWindowListener(this);
-		this.bajaClientes.btnBuscarCliente.addActionListener(this);
-		this.bajaClientes.btnEliminar.addActionListener(this);
-		this.bajaClientes.btnCancelarEliminar.addActionListener(this);
 	}
 	
 	//=============================== WINDOWS LISTENER  ===================================
