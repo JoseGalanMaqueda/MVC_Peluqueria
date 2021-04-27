@@ -69,12 +69,12 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 		{
 			AltaClientes altaClientes = new AltaClientes();
 			ModeloCliente modeloClientes = new ModeloCliente();
-			new ControladorClientes(altaClientes, modeloClientes);
+			new ControladorAltaClientes(altaClientes, modeloClientes);
 		}
 		else if (arg0.getSource().equals(vistaPrincipal.mniBajaCliente)) {
 			BajaClientes bajaClientes = new BajaClientes();
 			ModeloCliente modeloCliente = new ModeloCliente();
-			new ControladorClientes(bajaClientes, modeloCliente);
+			new ControladorBajaCliente(bajaClientes, modeloCliente);
 		}
 		else if (arg0.getSource().equals(vistaPrincipal.mniAltaTratamiento))
 		{
