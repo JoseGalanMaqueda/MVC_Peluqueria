@@ -1,11 +1,14 @@
 package es.JoseGalanMaqueda.modelo;
 
 import java.awt.Choice;
+import java.awt.TextArea;
 import java.awt.TextField;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import es.josegalan.BaseDatos.BaseDatos;
 
 public class ModeloCliente
 {
@@ -108,6 +111,31 @@ public class ModeloCliente
 			bd.desconectar(connection);
 		}
 		return eliminado;
+	}
+	
+	public void consultaClientes(TextArea txaConsultaClientes) {
+		bd= new BaseDatos();
+		connection = bd.conectar();
+		try {
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM clientes;";
+			rs = statement.executeQuery(sentencia);
+			txaConsultaClientes.selectAll();
+			txaConsultaClientes.setText("");
+			txaConsultaClientes.append("IdCliente\tNombre\tApellidos\tDNI\tDireccion\tSexo\n");
+			txaConsultaClientes.append("====================================================\n");
+			while (rs.next()) {
+				txaConsultaClientes.append(rs.getInt("idCliente")+"\t"+rs.getString("nombreCliente")+"\t"+rs.getString("apellidosCliente")+"\t"+
+						rs.getString("dniCliente")+"\t"+rs.getString("direccionCliente")+"\t"+rs.getString("sexoCliente")+"\n");
+			}
+		} catch (SQLException e) {
+			txaConsultaClientes.selectAll();
+			txaConsultaClientes.setText("");
+			txaConsultaClientes.append("Error al cargar los datos");	
+		}finally {
+			bd.desconectar(connection);
+		}
 	}
 	
 
