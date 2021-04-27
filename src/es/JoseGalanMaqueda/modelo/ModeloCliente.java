@@ -1,11 +1,11 @@
 package es.JoseGalanMaqueda.modelo;
 
+import java.awt.Choice;
 import java.awt.TextField;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 
 public class ModeloCliente
 {
@@ -47,26 +47,70 @@ public class ModeloCliente
 		return insertado;
 	}
 	
-	public ArrayList<String> busquedaClientes(String nombre) {
-		ArrayList<String> clientes = new ArrayList<String>(); 
-		
+	public void cargarListadoClientes(Choice cholistaClientes, String clienteBuscado) 
+	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
-		
 		try {
-			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-			sentencia = "SELECT * FROM clientes WHERE nombreCliente LIKE '"+nombre+"%'";
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM clientes WHERE nombreCliente LIKE '"+clienteBuscado+"%';";
 			rs = statement.executeQuery(sentencia);
-			
+			cholistaClientes.removeAll();
+			cholistaClientes.add("Selecciona un Cliente..");
 			while (rs.next()) {
-				clientes.add(rs.getInt("idCliente")+"-"+rs.getString("nombreCliente")+"-"+rs.getString("apellidosCliente")+"-"+rs.getString("dniCliente"));
+				cholistaClientes.add(rs.getInt("idCliente")+"-"+rs.getString("nombreCliente")+"-"+rs.getString("apellidosCliente")+"-"+rs.getString("dniCliente"));
 			}
-			
 		} catch (SQLException e) {
-			System.out.println("Error 3.- "+e.getMessage());
+			cholistaClientes.removeAll();
+			cholistaClientes.add("Problema al cargar los datos");
+		}finally {
+			bd.desconectar(connection);
 		}
-		return clientes;
 	}
+	
+	
+	public void cargarListadoClientes(Choice cholistaClientes) 
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		try {
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM clientes;";
+			rs = statement.executeQuery(sentencia);
+			cholistaClientes.removeAll();
+			cholistaClientes.add("Selecciona un Cliente..");
+			while (rs.next()) {
+				cholistaClientes.add(rs.getInt("idCliente")+"-"+rs.getString("nombreCliente")+"-"+rs.getString("apellidosCliente")+"-"+rs.getString("dniCliente"));
+			}
+		} catch (SQLException e) {
+			cholistaClientes.removeAll();
+			cholistaClientes.add("Problema al cargar los datos");
+		}finally {
+			bd.desconectar(connection);
+		}
+	}
+	
+	public boolean eliminarClientes(Choice choListaCliente) {
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		boolean eliminado = true;
+		try
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			sentencia = "DELETE FROM clientes WHERE idCliente = "+choListaCliente.getSelectedItem().split("-")[0]+";";
+			statement.executeUpdate(sentencia);
+		} catch (SQLException e1)
+		{
+			eliminado = false;
+		}finally {
+			bd.desconectar(connection);
+		}
+		return eliminado;
+	}
+	
+
 	
 	
 }
