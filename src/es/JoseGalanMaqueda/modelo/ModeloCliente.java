@@ -121,7 +121,7 @@ public class ModeloCliente
 			rs = statement.executeQuery(sentencia);
 			txaConsultaClientes.selectAll();
 			txaConsultaClientes.setText("");
-			txaConsultaClientes.append("IdCliente\tNombre\tApellidos\tDNI\tDireccion\tSexo\n");
+			txaConsultaClientes.append("Id\tNombre\tApellidos\tDNI\tDireccion\tSexo\n");
 			txaConsultaClientes.append("====================================================\n");
 			while (rs.next()) {
 				txaConsultaClientes.append(rs.getInt("idCliente")+"\t"+rs.getString("nombreCliente")+"\t"+rs.getString("apellidosCliente")+"\t"+

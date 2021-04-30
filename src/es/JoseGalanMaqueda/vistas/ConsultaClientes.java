@@ -20,7 +20,7 @@ public class ConsultaClientes {
 	
 	public ConsultaClientes() {
 		frmConsulaClientes.setLayout(new FlowLayout());
-		frmConsulaClientes.setSize(500, 350);
+		frmConsulaClientes.setSize(450, 350);
 		frmConsulaClientes.setBackground(clFondo);
 		frmConsulaClientes.add(lblInformacionClientes);
 		txaConsultaClientes.setEditable(false);

@@ -21,13 +21,18 @@ public class ControladorConsultaClientes implements ActionListener, WindowListen
 		this.consultaClientes.btnExportarPdfClientes.addActionListener(this);
 		this.consultaClientes.frmConsulaClientes.addWindowListener(this);
 		
+		this.modeloClientes.consultaClientes(this.consultaClientes.txaConsultaClientes);
 	}
 
 	@Override
 	public void windowOpened(WindowEvent e) {}
 
 	@Override
-	public void windowClosing(WindowEvent e) {}
+	public void windowClosing(WindowEvent e) {
+		if (consultaClientes.frmConsulaClientes.isActive()) {
+			consultaClientes.frmConsulaClientes.setVisible(false);
+		}
+	}
 
 	@Override
 	public void windowClosed(WindowEvent e) {}
@@ -45,6 +50,10 @@ public class ControladorConsultaClientes implements ActionListener, WindowListen
 	public void windowDeactivated(WindowEvent e) {}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {}
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource().equals(consultaClientes.btnCancelarConsultaClientes)) {
+			consultaClientes.frmConsulaClientes.setVisible(false);
+		}
+	}
 	
 }
