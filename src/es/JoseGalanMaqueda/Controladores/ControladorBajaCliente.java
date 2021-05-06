@@ -36,26 +36,41 @@ public class ControladorBajaCliente implements WindowListener, ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(bajaCliente.btnCancelarEliminar)) {
+		if (e.getSource().equals(bajaCliente.btnCancelarEliminar)) 
+		{
 			bajaCliente.frmEliminarCliente.setVisible(false);
-		}else if (e.getSource().equals(bajaCliente.btnNoConfirmacionElimiarCliente)) {
+		}
+		else if (e.getSource().equals(bajaCliente.btnNoConfirmacionElimiarCliente)) 
+		{
 			bajaCliente.frmConfirmacionEliminarCliente.setVisible(false);
-		}else if (e.getSource().equals(bajaCliente.btnBuscarCliente)) {
+		}
+		else if (e.getSource().equals(bajaCliente.btnBuscarCliente)) 
+		{
 			modeloCliente.cargarListadoClientes(bajaCliente.choListaCliente, bajaCliente.txtBuscarCliente.getText());
-		}else if (e.getSource().equals(bajaCliente.btnEliminar)) {
+		}
+		else if (e.getSource().equals(bajaCliente.btnEliminar)) 
+		{
 			bajaCliente.creacionDialogoNotificacion(bajaCliente.dlgErrorEliminar, bajaCliente.lblErrorEliminar);
-			if (!bajaCliente.choListaCliente.getSelectedItem().equals("Selecciona un Cliente..")) {
+			if (!bajaCliente.choListaCliente.getSelectedItem().equals("Selecciona un Cliente..")) 
+			{
 				bajaCliente.creacionVentanaConfirmacion(bajaCliente.frmConfirmacionEliminarCliente, bajaCliente.lblConfirmacionEliminarCliente, bajaCliente.btnSiConfirmacionElimiarCliente, bajaCliente.btnNoConfirmacionElimiarCliente);
-			}else {
+			}
+			else 
+			{
 				bajaCliente.lblErrorEliminar.setText("Selecciona Cliente válido");
 				bajaCliente.dlgErrorEliminar.setVisible(true);
 			}
-		}else if (e.getSource().equals(bajaCliente.btnSiConfirmacionElimiarCliente)) {
+		}
+		else if (e.getSource().equals(bajaCliente.btnSiConfirmacionElimiarCliente)) 
+		{
 			bajaCliente.creacionDialogoNotificacion(bajaCliente.dlgErrorEliminar, bajaCliente.lblErrorEliminar);
-			if (modeloCliente.eliminarClientes(bajaCliente.choListaCliente)) {
+			if (modeloCliente.eliminarClientes(bajaCliente.choListaCliente)) 
+			{
 				bajaCliente.creacionDialogoNotificacion(bajaCliente.dlgEliminadoCorrecto, bajaCliente.lblEliminadoCorrectamente);
 				bajaCliente.dlgEliminadoCorrecto.setVisible(true);
-			}else {
+			}
+			else 
+			{
 				bajaCliente.lblErrorEliminar.setText("Error al eliminar");
 				bajaCliente.dlgErrorEliminar.setVisible(true);
 			}
