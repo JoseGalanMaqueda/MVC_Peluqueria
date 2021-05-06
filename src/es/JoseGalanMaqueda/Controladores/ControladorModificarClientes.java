@@ -42,7 +42,8 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 		{
 			modeloCliente.cargarListadoClientes(vistaModificarCliente.choListaCliente, vistaModificarCliente.txtBuscarCliente.getText());
 		}
-		else if (e.getSource().equals(vistaModificarCliente.btnModificarUno)) {
+		else if (e.getSource().equals(vistaModificarCliente.btnModificarUno)) 
+		{
 			vistaModificarCliente.creacionDialogoNotificacion(vistaModificarCliente.dlgErrorModificarSeleccionarCliente, vistaModificarCliente.lblErrorModificarSeleccionarCliente);
 			if (!vistaModificarCliente.choListaCliente.getSelectedItem().equals("Selecciona un Cliente..")) 
 			{
