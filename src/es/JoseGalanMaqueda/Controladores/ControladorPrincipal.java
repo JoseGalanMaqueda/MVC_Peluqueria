@@ -11,6 +11,7 @@ import es.JoseGalanMaqueda.vistas.AltaClientes;
 import es.JoseGalanMaqueda.vistas.AltaTratamientos;
 import es.JoseGalanMaqueda.vistas.BajaClientes;
 import es.JoseGalanMaqueda.vistas.ConsultaClientes;
+import es.JoseGalanMaqueda.vistas.ModificarCliente;
 import es.JoseGalanMaqueda.vistas.Principal;
 
 public class ControladorPrincipal implements ActionListener, WindowListener
@@ -76,6 +77,12 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 			BajaClientes bajaClientes = new BajaClientes();
 			ModeloCliente modeloCliente = new ModeloCliente();
 			new ControladorBajaCliente(bajaClientes, modeloCliente);
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniModificacionCliente)) 
+		{
+			ModificarCliente modificarCliente = new ModificarCliente();
+			ModeloCliente modeloCliente = new ModeloCliente();
+			new ControladorModificarClientes(modificarCliente, modeloCliente);
 		}
 		else if (arg0.getSource().equals(vistaPrincipal.mniConsultaCliente)) {
 			ConsultaClientes consultaClientes = new ConsultaClientes();
