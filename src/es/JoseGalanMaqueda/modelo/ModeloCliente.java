@@ -19,8 +19,8 @@ public class ModeloCliente
 	Statement statement = null;
 	ResultSet rs = null;
 
-	
-	// ================================ METODOS ===================================================
+
+	// ================================ ALTA CLIENTES ===================================================
 	public boolean comprobacionDatosIntroducidos(TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) 
 	{
 		boolean booleano = false;
@@ -52,7 +52,8 @@ public class ModeloCliente
 		}
 		return insertado;
 	}
-	
+
+	// =============================== CARGAR DATOS EN LISTADOS ================================================================
 	public void cargarListadoClientes(Choice cholistaClientes, String clienteBuscado) 
 	{
 		bd = new BaseDatos();
@@ -74,8 +75,8 @@ public class ModeloCliente
 			bd.desconectar(connection);
 		}
 	}
-	
-	
+
+
 	public void cargarListadoClientes(Choice cholistaClientes) 
 	{
 		bd = new BaseDatos();
@@ -97,7 +98,8 @@ public class ModeloCliente
 			bd.desconectar(connection);
 		}
 	}
-	
+
+	// ===================================== ELIMINAR CLIENTES ========================================================
 	public boolean eliminarClientes(Choice choListaCliente) {
 		bd = new BaseDatos();
 		connection = bd.conectar();
@@ -116,7 +118,56 @@ public class ModeloCliente
 		}
 		return eliminado;
 	}
-	
+
+	public boolean actualizarCliente(TextField id,TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) {
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		boolean actualizado = true;
+		try
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			sentencia = "UPDATE clientes SET nombreCliente = '"+nombre.getText()+"',"
+					+ "apellidosCliente = '"+apellidos.getText()+"',"
+					+ " dniCliente = '"+dni.getText()+"', "
+					+ "direccionCliente = '"+direccion.getText()+"', "
+					+ "sexoCliente = '"+eleccion+"' "
+					+ "WHERE idCliente = "+id.getText()+"";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
+			statement.executeUpdate(sentencia);
+		} catch (SQLException e1)
+		{
+			actualizado = false;
+		}finally {
+			bd.desconectar(connection);
+		}
+		return actualizado;
+	}
+
+	// ============================== CARGAR DATOS CLIENTES SELECCIONADO =============================================
+	public String cargarDatosCliente(String id) {
+		bd= new BaseDatos();
+		connection = bd.conectar();
+		String valores = "";
+		try {
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM clientes WHERE idCliente = "+id+";";
+			rs = statement.executeQuery(sentencia);
+			while (rs.next()) {
+				valores = rs.getInt("idCliente")+"-"+rs.getString("nombreCliente")+"-"+rs.getString("apellidosCliente")+"-"+
+						rs.getString("dniCliente")+"-"+rs.getString("direccionCliente")+"-"+rs.getString("sexoCliente");
+			}
+		} catch (SQLException e) {
+			valores = "";	
+		}finally {
+			bd.desconectar(connection);
+		}
+		return valores;
+	}
+
+
+
+	// ===================================== CONSULTAR CLIENTES ======================================================
 	public void consultaClientes(TextArea txaConsultaClientes) {
 		bd= new BaseDatos();
 		connection = bd.conectar();
@@ -142,8 +193,8 @@ public class ModeloCliente
 			bd.desconectar(connection);
 		}
 	}
-	
 
-	
-	
+
+
+
 }
