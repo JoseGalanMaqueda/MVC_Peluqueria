@@ -8,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import es.JoseGalanMaqueda.Controladores.ControladorLogin;
+
 public class ModeloCliente
 {
 	// ================================ BASE DATOS ===============================================
@@ -37,6 +39,7 @@ public class ModeloCliente
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			sentencia = "INSERT INTO clientes VALUES (null, '"+ nombre.getText()+ "', '" +apellidos.getText() + "', '"+ dni.getText() +"', '" + direccion.getText() + "', '" + eleccion +"');";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
 
 		} catch (SQLException e1)
@@ -101,6 +104,7 @@ public class ModeloCliente
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			sentencia = "DELETE FROM clientes WHERE idCliente = "+choListaCliente.getSelectedItem().split("-")[0]+";";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
 		} catch (SQLException e1)
 		{
@@ -118,6 +122,7 @@ public class ModeloCliente
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * FROM clientes;";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			rs = statement.executeQuery(sentencia);
 			txaConsultaClientes.selectAll();
 			txaConsultaClientes.setText("");
