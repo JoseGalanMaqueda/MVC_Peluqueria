@@ -21,6 +21,7 @@ public class FicheroLog {
 			salida.print("["+formato.format(fechaActual)+"]");
 			salida.print("["+usuario+"]");
 			salida.print("["+mensaje+"]");
+			salida.print("\n");
 			salida.close();
 			bw.close();
 			fw.close();
