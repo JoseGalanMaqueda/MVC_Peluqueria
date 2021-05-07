@@ -19,6 +19,8 @@ public class ModeloCliente
 	Statement statement = null;
 	ResultSet rs = null;
 
+	
+	// ================================ METODOS ===================================================
 	public boolean comprobacionDatosIntroducidos(TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) 
 	{
 		boolean booleano = false;
