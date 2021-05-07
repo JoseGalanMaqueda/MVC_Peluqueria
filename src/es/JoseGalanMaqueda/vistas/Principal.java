@@ -18,6 +18,7 @@ public class Principal
 	TextArea txaCitasHoy = new TextArea(16,54);
 	public Button btnActualizar = new Button("Actualizar Citas");
 	Color clFondo = new Color(204,229,255);
+	public static int tipo;
 
 	//===================================== MENU PRINCIPAL =====================================
 	MenuBar menuPrincipal = new MenuBar();
@@ -48,6 +49,7 @@ public class Principal
 	public Principal(int tipo) {
 		ventanaPrincipal.setSize(450, 400);
 		ventanaPrincipal.setLayout(new FlowLayout());
+		Principal.tipo = tipo; // Para tener el usuario que ha accedido a nuestra aplicacion
 
 		mnuCliente.add(mniAltaCliente);
 		if (tipo == 0) {

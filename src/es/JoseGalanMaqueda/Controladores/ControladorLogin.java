@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import es.JoseGalanMaqueda.modelo.FicheroLog;
 import es.JoseGalanMaqueda.modelo.ModeloUsuarios;
 import es.JoseGalanMaqueda.vistas.Login;
 import es.JoseGalanMaqueda.vistas.Principal;
@@ -13,6 +14,7 @@ public class ControladorLogin implements WindowListener, ActionListener {
 	
 	Login login;
 	ModeloUsuarios modeloUsuarios;
+	public static String nombreUsuario;
 	
 	public ControladorLogin(Login login, ModeloUsuarios modeloUsuarios) {
 		this.login = login;
@@ -65,6 +67,8 @@ public class ControladorLogin implements WindowListener, ActionListener {
 		else if (e.getSource().equals(login.btnAcceder)) {
 			int tipo = modeloUsuarios.comprobacionUsuario(login.txtNombreUsuario.getText(), login.txtPassword.getText());
 			if (tipo == 1 || tipo == 0) {
+				nombreUsuario = login.txtNombreUsuario.getText();
+				FicheroLog.guardar(nombreUsuario, "Acceso a Aplicación");
 				Principal principal = new Principal(tipo);
 				new ControladorPrincipal(principal);
 				login.frmVentanaLogin.setVisible(false);

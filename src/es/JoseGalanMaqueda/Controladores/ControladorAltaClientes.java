@@ -37,14 +37,17 @@ public class ControladorAltaClientes implements WindowListener, ActionListener, 
 	public void windowOpened(WindowEvent e) {}
 
 	@Override
-	public void windowClosing(WindowEvent e) {
-		
+	public void windowClosing(WindowEvent e) 
+	{	
 		if (altaCliente.frmAltaClientes.isActive()) // Ventana Alta Clientes 
 		{
 			altaCliente.frmAltaClientes.setVisible(false);
-		}else if (altaCliente.dlgErrorInsertarCliente.isActive()) { // Dialogo Error Alta Clientes
+		}
+		else if (altaCliente.dlgErrorInsertarCliente.isActive()) 
+		{ // Dialogo Error Alta Clientes
 			altaCliente.dlgErrorInsertarCliente.setVisible(false);
-		}else if (altaCliente.dlgClienteInsertado.isActive()) // Dialogo Confirmacion Alta Clientes
+		}
+		else if (altaCliente.dlgClienteInsertado.isActive()) // Dialogo Confirmacion Alta Clientes
 		{
 			altaCliente.dlgClienteInsertado.setVisible(false);
 			altaCliente.frmAltaClientes.setVisible(false);
