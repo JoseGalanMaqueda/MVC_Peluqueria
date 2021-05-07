@@ -118,7 +118,9 @@ public class ModeloCliente
 		}
 		return eliminado;
 	}
+	
 
+	// ====================================== METODOS ACTUALIZAR CLIENTES =========================================
 	public boolean actualizarCliente(TextField id,TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) {
 		bd = new BaseDatos();
 		connection = bd.conectar();
@@ -143,7 +145,6 @@ public class ModeloCliente
 		return actualizado;
 	}
 
-	// ============================== CARGAR DATOS CLIENTES SELECCIONADO =============================================
 	public String cargarDatosCliente(String id) {
 		bd= new BaseDatos();
 		connection = bd.conectar();
