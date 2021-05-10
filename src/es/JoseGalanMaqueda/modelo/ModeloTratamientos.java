@@ -18,7 +18,9 @@ public class ModeloTratamientos
 	Connection connection = null;
 	Statement statement = null;
 	ResultSet rs = null;
-
+	
+	
+	// ================================ INSERTAR TRATAMIENTOS ============================================
 	public boolean comprobacionDatos(TextField nombre) 
 	{
 		boolean booleano = false;
@@ -36,6 +38,7 @@ public class ModeloTratamientos
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			sentencia = "INSERT INTO tratamientos VALUES (null, '"+ nombre.getText()+ "', '" +descripcion.getText()+ "', "+ precio.getSelectedItem() +");";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
 
 		} catch (SQLException e1)
