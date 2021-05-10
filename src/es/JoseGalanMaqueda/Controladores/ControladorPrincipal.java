@@ -93,7 +93,7 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 		{
 			AltaTratamientos altaTratamientos = new AltaTratamientos();
 			ModeloTratamientos modeloTratamientos = new ModeloTratamientos();
-			new ControladorTratamientos(altaTratamientos, modeloTratamientos);
+			new ControladorAltaTratamientos(altaTratamientos, modeloTratamientos);
 		}
 	}
 
