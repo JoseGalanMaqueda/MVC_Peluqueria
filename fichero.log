@@ -15,3 +15,5 @@
 [07/05/2021 13:13:34][admin][INSERT INTO clientes VALUES (null, 'ÑOÑO', 'ÑOÑO', '77777777B', 'C/ Feo', 'Hombre');]
 [07/05/2021 13:13:59][admin][UPDATE clientes SET nombreCliente = 'ÑAÑA',apellidosCliente = 'ÑAÑA', dniCliente = '77777777B', direccionCliente = 'C/ Feo', sexoCliente = 'Hombre' WHERE idCliente = 22]
 [07/05/2021 13:14:04][admin][SELECT * FROM clientes;]
+[10/05/2021 11:32:03][admin][Acceso a Aplicación]
+[10/05/2021 11:33:01][admin][SELECT * FROM clientes;]

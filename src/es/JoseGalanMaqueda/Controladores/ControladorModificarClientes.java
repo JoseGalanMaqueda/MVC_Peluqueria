@@ -10,10 +10,12 @@ import es.JoseGalanMaqueda.vistas.ModificarCliente;
 
 public class ControladorModificarClientes implements WindowListener, ActionListener {
 	
+	// ===================== ATRIBUTOS ===============================
 	ModificarCliente vistaModificarCliente;
 	ModeloCliente modeloCliente;
 	String eleccionDos="";
 	
+	// ====================== CONSTRUCTOR =================================
 	public ControladorModificarClientes(ModificarCliente vistaModificarCliente, ModeloCliente modeloCliente) {
 		this.vistaModificarCliente = vistaModificarCliente;
 		this.modeloCliente = modeloCliente;
@@ -41,6 +43,7 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 		this.vistaModificarCliente.dlgClientesModificado.addWindowListener(this);
 	}
 
+	// ====================== ACTION LISTENER ==============================================
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -82,16 +85,17 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 					vistaModificarCliente.creacionDialogoNotificacion(vistaModificarCliente.dlgClientesModificado, vistaModificarCliente.lblModificadoCorrectamente);
 					vistaModificarCliente.dlgClientesModificado.setVisible(true);
 				}else {
-					vistaModificarCliente.lblConfirmacionModificarCliente.setText("Error al Insertar");
+					vistaModificarCliente.lblErrorModificarCliente.setText("Error al Insertar");
 					vistaModificarCliente.dlgErrorModificarCliente.setVisible(true);
 				}
 			}else {
-				vistaModificarCliente.lblConfirmacionModificarCliente.setText("Datos introducidos incorrectos");
+				vistaModificarCliente.lblErrorModificarCliente.setText("Faltan Datos");
 				vistaModificarCliente.dlgErrorModificarCliente.setVisible(true);
 			}
 		}
 	}
 
+	// ==================================== WINDOW LISTENER ===================================================
 	@Override
 	public void windowOpened(WindowEvent e) {}
 
@@ -137,6 +141,7 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 	@Override
 	public void windowDeactivated(WindowEvent e) {}
 	
+	// ============================== CARGAR DATOS VENTANA =============================================
 	public void cargarDatosVentana(String[] datos) {
 		vistaModificarCliente.txtIdModificacionClientesDos.setText(datos[0]);
 		vistaModificarCliente.txtNombreModificacionClientesDos.setText(datos[1]);
