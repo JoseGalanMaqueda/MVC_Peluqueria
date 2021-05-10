@@ -14,6 +14,7 @@ import es.JoseGalanMaqueda.vistas.BajaTratamientos;
 import es.JoseGalanMaqueda.vistas.ConsultaClientes;
 import es.JoseGalanMaqueda.vistas.ConsultaTratamientos;
 import es.JoseGalanMaqueda.vistas.ModificarCliente;
+import es.JoseGalanMaqueda.vistas.ModificarTratamientos;
 import es.JoseGalanMaqueda.vistas.Principal;
 
 public class ControladorPrincipal implements ActionListener, WindowListener
@@ -103,6 +104,12 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 			BajaTratamientos bajaTratamientos = new BajaTratamientos();
 			ModeloTratamientos modeloTratamientos = new ModeloTratamientos();
 			new ControladorBajaTratamientos(bajaTratamientos, modeloTratamientos);
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniModificacionTratamiento)) 
+		{
+			ModificarTratamientos modificarTratamientos = new ModificarTratamientos();
+			ModeloTratamientos modeloTratamientos = new ModeloTratamientos();
+			new ControladorModificarTratamientos(modificarTratamientos, modeloTratamientos);
 		}
 		else if (arg0.getSource().equals(vistaPrincipal.mniConsultaTratamientos)) 
 		{

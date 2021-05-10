@@ -111,6 +111,51 @@ public class ModeloTratamientos
 		return eliminado;
 	}
 	
+	public String cargarDatosTratamientos(String id) {
+		bd= new BaseDatos();
+		connection = bd.conectar();
+		String valores = "";
+		try {
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM tratamientos WHERE idTratamiento = "+id+";";
+			rs = statement.executeQuery(sentencia);
+			while (rs.next()) {
+				valores = rs.getInt("idTratamiento")+"-"+rs.getString("nombreTratamiento")+"-"+rs.getString("descripcionTratamiento")+"-"+
+						rs.getDouble("precioTratamiento");
+			}
+		} catch (SQLException e) {
+			valores = "";	
+		}finally {
+			bd.desconectar(connection);
+		}
+		return valores;
+	}
+	
+	
+	public boolean actulizarTratamientos(TextField id, TextField nombre,Choice precios ,TextArea descripcion ) 
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		boolean actualizado = true;
+		try
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			sentencia = "UPDATE tratamientos SET nombreTratamiento = '"+nombre.getText()+"',"
+					+ "descripcionTratamiento = '"+descripcion.getText()+"',"
+					+ " precioTratamiento = "+precios.getSelectedItem()+" "
+					+ "WHERE idTratamiento = "+id.getText()+";";
+			statement.executeUpdate(sentencia);
+		} catch (SQLException e1)
+		{
+			actualizado = false;
+		}finally {
+			bd.desconectar(connection);
+		}
+		
+		return actualizado;
+	}
+	
 	// =========================== CONSULTA TRATAMIENTOS ==========================
 	
 	public void consultaTratamientos(TextArea txaConsultaTratamientos) 

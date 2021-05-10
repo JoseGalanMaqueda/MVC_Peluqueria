@@ -36,6 +36,11 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 		this.vistaModificarCliente.btnCancelarModificacionClientesDos.addActionListener(this);
 		this.vistaModificarCliente.btnModificacionClientesDos.addActionListener(this);
 		
+		// ========== VENTANA CONFIRMACION ================
+		this.vistaModificarCliente.frmConfirmacionModificarCliente.addWindowListener(this);
+		this.vistaModificarCliente.btnSiConfirmacionModificarCliente.addActionListener(this);
+		this.vistaModificarCliente.btnNoConfirmacionModificarCliente.addActionListener(this);
+		
 		// ======= DIALOGO ERROR MODIFICAR ================
 		this.vistaModificarCliente.dlgErrorModificarCliente.addWindowListener(this);
 		
@@ -79,17 +84,27 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 			if (modeloCliente.comprobacionDatosIntroducidos(vistaModificarCliente.txtNombreModificacionClientesDos,
 					vistaModificarCliente.txtApellidosModificacionClientesDos, vistaModificarCliente.txtDniModificacionClientesDos, vistaModificarCliente.txtDireccionModificacionClientesDos, eleccionDos))
 			{
-				if (modeloCliente.actualizarCliente(vistaModificarCliente.txtIdModificacionClientesDos,vistaModificarCliente.txtNombreModificacionClientesDos,
-						vistaModificarCliente.txtApellidosModificacionClientesDos, vistaModificarCliente.txtDniModificacionClientesDos, vistaModificarCliente.txtDireccionModificacionClientesDos, eleccionDos))
-				{
-					vistaModificarCliente.creacionDialogoNotificacion(vistaModificarCliente.dlgClientesModificado, vistaModificarCliente.lblModificadoCorrectamente);
-					vistaModificarCliente.dlgClientesModificado.setVisible(true);
-				}else {
-					vistaModificarCliente.lblErrorModificarCliente.setText("Error al Insertar");
-					vistaModificarCliente.dlgErrorModificarCliente.setVisible(true);
-				}
-			}else {
+				vistaModificarCliente.creacionVentanaConfirmacion(vistaModificarCliente.frmConfirmacionModificarCliente, vistaModificarCliente.lblConfirmacionModificarCliente, vistaModificarCliente.btnSiConfirmacionModificarCliente, vistaModificarCliente.btnNoConfirmacionModificarCliente);
+			}
+			else 
+			{
 				vistaModificarCliente.lblErrorModificarCliente.setText("Faltan Datos");
+				vistaModificarCliente.dlgErrorModificarCliente.setVisible(true);
+			}
+		}
+		else if (e.getSource().equals(vistaModificarCliente.btnNoConfirmacionModificarCliente)) 
+		{
+			vistaModificarCliente.frmConfirmacionModificarCliente.setVisible(false);
+		}
+		else if (e.getSource().equals(vistaModificarCliente.btnSiConfirmacionModificarCliente)) 
+		{
+			if (modeloCliente.actualizarCliente(vistaModificarCliente.txtIdModificacionClientesDos,vistaModificarCliente.txtNombreModificacionClientesDos,
+					vistaModificarCliente.txtApellidosModificacionClientesDos, vistaModificarCliente.txtDniModificacionClientesDos, vistaModificarCliente.txtDireccionModificacionClientesDos, eleccionDos))
+			{
+				vistaModificarCliente.creacionDialogoNotificacion(vistaModificarCliente.dlgClientesModificado, vistaModificarCliente.lblModificadoCorrectamente);
+				vistaModificarCliente.dlgClientesModificado.setVisible(true);
+			}else {
+				vistaModificarCliente.lblErrorModificarCliente.setText("Error al Insertar");
 				vistaModificarCliente.dlgErrorModificarCliente.setVisible(true);
 			}
 		}
@@ -121,8 +136,13 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 		else if (vistaModificarCliente.dlgClientesModificado.isActive()) 
 		{
 			vistaModificarCliente.dlgClientesModificado.setVisible(false);
+			vistaModificarCliente.frmConfirmacionModificarCliente.setVisible(false);
 			vistaModificarCliente.frmModificacionClientesDos.setVisible(false);
 			vistaModificarCliente.frmModificarClienteUno.setVisible(false);
+		}
+		else if (vistaModificarCliente.frmConfirmacionModificarCliente.isActive()) 
+		{
+			vistaModificarCliente.frmConfirmacionModificarCliente.setVisible(false);
 		}
 	}
 
