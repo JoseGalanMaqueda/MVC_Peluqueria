@@ -110,4 +110,45 @@ public class ModeloTratamientos
 		}
 		return eliminado;
 	}
+	
+	// =========================== CONSULTA TRATAMIENTOS ==========================
+	
+	public void consultaTratamientos(TextArea txaConsultaTratamientos) 
+	{
+		bd= new BaseDatos();
+		connection = bd.conectar();
+		try {
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM tratamientos;";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
+			rs = statement.executeQuery(sentencia);
+			txaConsultaTratamientos.selectAll();
+			txaConsultaTratamientos.setText("");
+			txaConsultaTratamientos.append("IdTratamiento\tNombre\tDescripcion\tPrecio\n");
+			txaConsultaTratamientos.append("=======================================================================\n");
+			while (rs.next()) {
+				txaConsultaTratamientos.append(rs.getInt("idTratamiento")+"\t"+rs.getString("nombreTratamiento")+"\t"+rs.getString("descripcionTratamiento")+"\t"+
+						rs.getDouble("precioTratamiento")+"0\n");
+			}
+		} catch (SQLException e) {
+			txaConsultaTratamientos.selectAll();
+			txaConsultaTratamientos.setText("");
+			txaConsultaTratamientos.append("Error al cargar los datos");
+			bd.desconectar(connection);
+		}
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
