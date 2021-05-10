@@ -13,7 +13,8 @@ public class ControladorTratamientos implements WindowListener, ActionListener {
 	AltaTratamientos altaTratamientos;
 	ModeloTratamientos modeloTratamientos;
 	
-	public ControladorTratamientos(AltaTratamientos altaTratamientos, ModeloTratamientos modeloTratamientos ) {
+	public ControladorTratamientos(AltaTratamientos altaTratamientos, ModeloTratamientos modeloTratamientos ) 
+	{
 		this.altaTratamientos = altaTratamientos;
 		this.modeloTratamientos = modeloTratamientos;
 		
@@ -26,10 +27,13 @@ public class ControladorTratamientos implements WindowListener, ActionListener {
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(altaTratamientos.btnCancelarAltaTratamiento)) {
+	public void actionPerformed(ActionEvent e) 
+	{
+		if (e.getSource().equals(altaTratamientos.btnCancelarAltaTratamiento)) 
+		{
 			altaTratamientos.frmAltaTratamientos.setVisible(false);
-		}else if (e.getSource().equals(altaTratamientos.btnAltaTratamiento)) // BOTON ALTA CLIENTES
+		}
+		else if (e.getSource().equals(altaTratamientos.btnAltaTratamiento)) // BOTON ALTA CLIENTES
 		{
 			altaTratamientos.creacionDialogoNotificacion(altaTratamientos.dlgErrorInsertarTratamiento, altaTratamientos.lblErrorAnadidoTratamiento);
 			if (modeloTratamientos.comprobacionDatos(altaTratamientos.txtNombreAltaTratamiento))
@@ -38,11 +42,15 @@ public class ControladorTratamientos implements WindowListener, ActionListener {
 				{
 					altaTratamientos.creacionDialogoNotificacion(altaTratamientos.dlgTratamientoInsertado, altaTratamientos.lblAnadidoCorrectamente);
 					altaTratamientos.dlgTratamientoInsertado.setVisible(true);
-				}else {
+				}
+				else 
+				{
 					altaTratamientos.lblErrorAnadidoTratamiento.setText("Error al Insertar");
 					altaTratamientos.dlgErrorInsertarTratamiento.setVisible(true);
 				}
-			}else {
+			}
+			else 
+			{
 				altaTratamientos.dlgErrorInsertarTratamiento.setVisible(true);
 			}
 		}
@@ -52,12 +60,18 @@ public class ControladorTratamientos implements WindowListener, ActionListener {
 	public void windowOpened(WindowEvent e) {}
 
 	@Override
-	public void windowClosing(WindowEvent e) {
-		if (altaTratamientos.frmAltaTratamientos.isActive()) {
+	public void windowClosing(WindowEvent e) 
+	{
+		if (altaTratamientos.frmAltaTratamientos.isActive()) 
+		{
 			altaTratamientos.frmAltaTratamientos.setVisible(false);
-		}if (altaTratamientos.dlgErrorInsertarTratamiento.isActive()) {
+		}
+		if (altaTratamientos.dlgErrorInsertarTratamiento.isActive()) 
+		{
 			altaTratamientos.dlgErrorInsertarTratamiento.setVisible(false);
-		}if (altaTratamientos.dlgTratamientoInsertado.isActive()) {
+		}
+		if (altaTratamientos.dlgTratamientoInsertado.isActive()) 
+		{
 			altaTratamientos.dlgTratamientoInsertado.setVisible(false);
 			altaTratamientos.frmAltaTratamientos.setVisible(false);
 		}
