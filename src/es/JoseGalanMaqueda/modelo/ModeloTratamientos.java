@@ -36,6 +36,7 @@ public class ModeloTratamientos
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 			sentencia = "INSERT INTO tratamientos VALUES (null, '"+ nombre.getText()+ "', '" +descripcion.getText()+ "', "+ precio.getSelectedItem() +");";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
 
 		} catch (SQLException e1)
@@ -145,6 +146,7 @@ public class ModeloTratamientos
 					+ "descripcionTratamiento = '"+descripcion.getText()+"',"
 					+ " precioTratamiento = "+precios.getSelectedItem()+" "
 					+ "WHERE idTratamiento = "+id.getText()+";";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
 		} catch (SQLException e1)
 		{
