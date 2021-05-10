@@ -16,7 +16,7 @@ public class AltaTratamientos
 	public Frame frmAltaTratamientos = new Frame("Alta Tratamientos");
 	Label lblNombreAltaTratamiento = new Label("Nombre:");
 	Label lblPrecioAltaTratamiento = new Label("Precio:");
-	Label lblDescipcionAltaTratamiento = new Label("Descripción:");
+	Label lblDescipcionAltaTratamiento = new Label("Descripciï¿½n:");
 	public TextField txtNombreAltaTratamiento = new TextField(20);
 	Color clFondo = new Color(204,229,255);
 	String[] precios = {"0.00","1.00","1.50","2.00","2.50","3.00","3.50","4.00","4.50","5.00","5.50","6.00","6.50","7.00","7.50","8.00","8.50","9.00","9.50"};
@@ -27,7 +27,7 @@ public class AltaTratamientos
 
 	// ============================== DIALOGO NOTIFICACION ==================================
 	public Dialog dlgTratamientoInsertado = new Dialog(frmAltaTratamientos, "Operacion Correcta", true);
-	public Label lblAnadidoCorrectamente = new Label("Tratamiento añadido correctamente");
+	public Label lblAnadidoCorrectamente = new Label("Tratamiento aï¿½adido correctamente");
 
 	// ============================== DIALOGO NOTIFICACION ==================================
 	public Dialog dlgErrorInsertarTratamiento = new Dialog(frmAltaTratamientos, "Error", true);
@@ -35,7 +35,7 @@ public class AltaTratamientos
 
 	public AltaTratamientos() 
 	{
-		frmAltaTratamientos.setSize(400, 270);
+		frmAltaTratamientos.setSize(430, 270);
 		frmAltaTratamientos.setLayout(new FlowLayout());
 		frmAltaTratamientos.add(lblNombreAltaTratamiento);
 		frmAltaTratamientos.add(txtNombreAltaTratamiento);
