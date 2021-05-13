@@ -10,9 +10,11 @@ import es.JoseGalanMaqueda.vistas.ModificarTratamientos;
 
 public class ControladorModificarTratamientos implements ActionListener, WindowListener 
 {
+	// ===================================== ATRIBUTOS ==================================================
 	ModificarTratamientos vista;
 	ModeloTratamientos modelo;
 
+	// =================================== CONSTRUCTOR ================================================
 	public ControladorModificarTratamientos(ModificarTratamientos vista, ModeloTratamientos modelo) 
 	{
 		this.vista = vista;
@@ -46,6 +48,7 @@ public class ControladorModificarTratamientos implements ActionListener, WindowL
 
 	}
 
+	// ========================================= WINDOWS LISTENER ===================================
 	@Override
 	public void windowOpened(WindowEvent e) {}
 
@@ -92,6 +95,8 @@ public class ControladorModificarTratamientos implements ActionListener, WindowL
 	@Override
 	public void windowDeactivated(WindowEvent e) {}
 
+	
+	// ============================================= ACTION LISTENER =====================================================
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -151,7 +156,8 @@ public class ControladorModificarTratamientos implements ActionListener, WindowL
 		}
 	}
 
-	public void cargarDatosVentana(String[] datos) {
+	public void cargarDatosVentana(String[] datos) 
+	{
 		vista.txtIdModificacionTratamientoDos.setText(datos[0]);
 		vista.txtNombreModificacionTratamientoDos.setText(datos[1]);
 		vista.txaDescripcionModificacion.setText(datos[2]);

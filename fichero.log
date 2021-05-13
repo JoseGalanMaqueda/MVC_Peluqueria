@@ -79,3 +79,6 @@
 [10/05/2021 21:05:34][admin][Acceso a Aplicación]
 [10/05/2021 21:08:49][admin][Acceso a Aplicación]
 [10/05/2021 21:09:05][admin][UPDATE tratamientos SET nombreTratamiento = 'Corte Viejos',descripcionTratamiento = 'Personas mayores de 60 años.', precioTratamiento = 4.50 WHERE idTratamiento = 10;]
+[11/05/2021 11:12:41][admin][Acceso a Aplicación]
+[11/05/2021 11:13:20][admin][SELECT * FROM tratamientos;]
+[11/05/2021 11:13:37][admin][SELECT * FROM tratamientos;]
