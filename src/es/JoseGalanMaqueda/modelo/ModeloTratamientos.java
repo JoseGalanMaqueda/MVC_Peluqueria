@@ -18,7 +18,9 @@ public class ModeloTratamientos
 	Connection connection = null;
 	Statement statement = null;
 	ResultSet rs = null;
-
+	
+	
+	// ================================ INSERTAR TRATAMIENTOS ============================================
 	public boolean comprobacionDatos(TextField nombre) 
 	{
 		boolean booleano = false;
