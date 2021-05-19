@@ -12,6 +12,7 @@ public class TestPeluqueria
 		Login login = new Login();
 		ModeloUsuarios modeloUsuarios = new ModeloUsuarios();
 		new ControladorLogin(login, modeloUsuarios);
+		
 	}
 
 }
