@@ -5,14 +5,19 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import es.JoseGalanMaqueda.modelo.ModeloCitas;
 import es.JoseGalanMaqueda.modelo.ModeloCliente;
 import es.JoseGalanMaqueda.modelo.ModeloTratamientos;
+import es.JoseGalanMaqueda.modelo.ModeloTratamientosCitas;
+import es.JoseGalanMaqueda.vistas.AltaCitas;
 import es.JoseGalanMaqueda.vistas.AltaClientes;
 import es.JoseGalanMaqueda.vistas.AltaTratamientos;
 import es.JoseGalanMaqueda.vistas.BajaClientes;
 import es.JoseGalanMaqueda.vistas.BajaTratamientos;
 import es.JoseGalanMaqueda.vistas.ConsultaClientes;
 import es.JoseGalanMaqueda.vistas.ConsultaTratamientos;
+import es.JoseGalanMaqueda.vistas.ConsultarAsignaciones;
+import es.JoseGalanMaqueda.vistas.ConsultarCitas;
 import es.JoseGalanMaqueda.vistas.ModificarCliente;
 import es.JoseGalanMaqueda.vistas.ModificarTratamientos;
 import es.JoseGalanMaqueda.vistas.Principal;
@@ -116,6 +121,24 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 			ConsultaTratamientos consultaTratamientos = new ConsultaTratamientos();
 			ModeloTratamientos modeloTratamientos = new ModeloTratamientos();
 			new ControladorConsultaTratamientos(consultaTratamientos, modeloTratamientos);
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniAltaCitas)) 
+		{
+			AltaCitas vista = new AltaCitas();
+			ModeloCitas modeloCitas = new ModeloCitas();
+			new ControladorAltaCitas(vista, modeloCitas);
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniConsultaCitas)) 
+		{
+			ConsultarCitas vista = new ConsultarCitas();
+			ModeloCitas modelo = new ModeloCitas();
+			new ControladorConsultaCitas(vista, modelo);
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniConsultarAsignacion)) 
+		{
+			ConsultarAsignaciones vista = new ConsultarAsignaciones();
+			ModeloTratamientosCitas modelo = new ModeloTratamientosCitas();
+			new ControladorConsultaAsignaciones(vista, modelo);
 		}
 	}
 
