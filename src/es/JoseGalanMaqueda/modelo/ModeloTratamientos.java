@@ -1,12 +1,27 @@
 package es.JoseGalanMaqueda.modelo;
 
 import java.awt.Choice;
+import java.awt.Desktop;
 import java.awt.TextArea;
 import java.awt.TextField;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import es.JoseGalanMaqueda.Controladores.ControladorLogin;
 
@@ -210,7 +225,7 @@ public class ModeloTratamientos
 			while (rs.next()) 
 			{
 				txaConsultaTratamientos.append(rs.getInt("idTratamiento")+"\t"+rs.getString("nombreTratamiento")+"\t"+rs.getString("descripcionTratamiento")+"\t"+
-						rs.getDouble("precioTratamiento")+"0\n");
+						rs.getDouble("precioTratamiento")+"0 €\n");
 			}
 		}
 		catch (SQLException e) 
@@ -220,6 +235,79 @@ public class ModeloTratamientos
 			txaConsultaTratamientos.append("Error al cargar los datos");
 			bd.desconectar(connection);
 		}
+	}
+	
+	public ArrayList<String> obtenerDatosParaExportar()
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		ArrayList<String> datos = new ArrayList<>();
+		
+		try 
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM tratamientos;";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
+			rs = statement.executeQuery(sentencia);
+			while (rs.next()) 
+			{
+				datos.add(rs.getString("idTratamiento"));
+				datos.add(rs.getString("nombreTratamiento"));
+				datos.add(rs.getString("descripcionTratamiento"));
+				datos.add(rs.getDouble("precioTratamiento")+"0 €");
+			}
+			
+		}
+		catch (SQLException e) 
+		{
+			e.getMessage();
+		}
+		bd.desconectar(connection);
+		return datos;
+	}
+	
+	public void exportarAPDF(ArrayList<String> datos) 
+	{
+		Document documento = new Document();
+		Paragraph parrafo = new Paragraph("Listado Tratamientos", FontFactory.getFont("arial", 22, Font.BOLD));
+		try
+		{
+			FileOutputStream ficheroPDF = new FileOutputStream("tratamientos.pdf");
+			PdfWriter.getInstance(documento, ficheroPDF).setInitialLeading(20);
+			documento.open();
+			PdfPTable tabla = new PdfPTable(4);
+			tabla.addCell("IdTratamiento");
+			tabla.addCell("Nombre");
+			tabla.addCell("Descripcion");
+			tabla.addCell("Precio");
+			
+			for (int i =0; i<datos.size(); i++) 
+			{
+				tabla.addCell(datos.get(i));
+			}
+			parrafo.setAlignment(Element.ALIGN_CENTER);
+			documento.add(parrafo);
+			documento.add(new Paragraph("\n"));
+			documento.add(tabla);
+			documento.close();
+			
+			File path = new File("tratamientos.pdf");
+			Desktop.getDesktop().open(path);
+		}
+		catch (FileNotFoundException e) 
+		{
+			e.getMessage();
+		}
+		catch (DocumentException e) 
+		{
+			e.getMessage();
+		}
+		catch (IOException e) 
+		{
+			e.getMessage();
+		}
+		
 	}
 }
 

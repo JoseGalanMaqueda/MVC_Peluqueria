@@ -34,7 +34,7 @@ public class ControladorConsultaTratamientos implements WindowListener, ActionLi
 		}
 		else if (e.getSource().equals(vista.btnExportarPdfTratamientos)) 
 		{
-			
+			modelo.exportarAPDF(modelo.obtenerDatosParaExportar());
 		}
 	}
 
