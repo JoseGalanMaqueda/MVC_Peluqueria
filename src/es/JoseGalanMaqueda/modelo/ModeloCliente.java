@@ -325,8 +325,6 @@ public class ModeloCliente
 			e.getMessage();
 		}
 		
-		
-		
 	}
 	
 	
