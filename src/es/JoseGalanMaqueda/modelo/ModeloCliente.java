@@ -309,6 +309,8 @@ public class ModeloCliente
 			documento.add(tabla);
 			documento.close();
 			
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, "Generacion PDF clientes");
+			
 			File path = new File("clientes.pdf");
 			Desktop.getDesktop().open(path);
 		}

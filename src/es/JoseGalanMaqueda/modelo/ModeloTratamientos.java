@@ -292,6 +292,8 @@ public class ModeloTratamientos
 			documento.add(tabla);
 			documento.close();
 			
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, "Generacion PDF tratamientos");
+			
 			File path = new File("tratamientos.pdf");
 			Desktop.getDesktop().open(path);
 		}
