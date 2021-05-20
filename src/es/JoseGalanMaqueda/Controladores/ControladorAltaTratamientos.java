@@ -8,7 +8,8 @@ import java.awt.event.WindowListener;
 import es.JoseGalanMaqueda.modelo.ModeloTratamientos;
 import es.JoseGalanMaqueda.vistas.AltaTratamientos;
 
-public class ControladorAltaTratamientos implements WindowListener, ActionListener {
+public class ControladorAltaTratamientos implements WindowListener, ActionListener 
+{
 	
 	AltaTratamientos altaTratamientos;
 	ModeloTratamientos modeloTratamientos;
