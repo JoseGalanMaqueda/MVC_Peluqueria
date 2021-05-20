@@ -8,13 +8,15 @@ import java.awt.event.WindowListener;
 import es.JoseGalanMaqueda.modelo.ModeloCliente;
 import es.JoseGalanMaqueda.vistas.BajaClientes;
 
-public class ControladorBajaCliente implements WindowListener, ActionListener {
+public class ControladorBajaCliente implements WindowListener, ActionListener 
+{
 	
 	BajaClientes bajaCliente;
 	ModeloCliente modeloCliente;
 	String eleccion;
 	
-	public ControladorBajaCliente(BajaClientes bajaCliente, ModeloCliente modeloCliente) {
+	public ControladorBajaCliente(BajaClientes bajaCliente, ModeloCliente modeloCliente) 
+	{
 		this.bajaCliente = bajaCliente;
 		this.modeloCliente = modeloCliente;
 		
@@ -35,7 +37,8 @@ public class ControladorBajaCliente implements WindowListener, ActionListener {
 	
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) 
+	{
 		if (e.getSource().equals(bajaCliente.btnCancelarEliminar)) 
 		{
 			bajaCliente.frmEliminarCliente.setVisible(false);
@@ -81,14 +84,22 @@ public class ControladorBajaCliente implements WindowListener, ActionListener {
 	public void windowOpened(WindowEvent e) {}
 
 	@Override
-	public void windowClosing(WindowEvent e) {
-		if (bajaCliente.frmEliminarCliente.isActive()) {
+	public void windowClosing(WindowEvent e) 
+	{
+		if (bajaCliente.frmEliminarCliente.isActive()) 
+		{
 			bajaCliente.frmEliminarCliente.setVisible(false);
-		}else if (bajaCliente.frmConfirmacionEliminarCliente.isActive()) {
+		}
+		else if (bajaCliente.frmConfirmacionEliminarCliente.isActive()) 
+		{
 			bajaCliente.frmConfirmacionEliminarCliente.setVisible(false);
-		}else if (bajaCliente.dlgErrorEliminar.isActive()) {
+		}
+		else if (bajaCliente.dlgErrorEliminar.isActive()) 
+		{
 			bajaCliente.dlgErrorEliminar.setVisible(false);
-		}else if (bajaCliente.dlgEliminadoCorrecto.isActive()) {
+		}
+		else if (bajaCliente.dlgEliminadoCorrecto.isActive()) 
+		{
 			bajaCliente.dlgEliminadoCorrecto.setVisible(false);
 			bajaCliente.frmConfirmacionEliminarCliente.setVisible(false);
 			bajaCliente.frmEliminarCliente.setVisible(false);
