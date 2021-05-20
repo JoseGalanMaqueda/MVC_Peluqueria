@@ -16,6 +16,10 @@ import java.util.ArrayList;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.Font;
+import com.itextpdf.text.FontFactory;
+import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
@@ -281,7 +285,7 @@ public class ModeloCliente
 	public void exportarAPDF(ArrayList<String> datos) 
 	{
 		Document documento = new Document();
-		
+		Paragraph parrafo = new Paragraph("Listado Clientes", FontFactory.getFont("arial", 22, Font.BOLD));
 		try
 		{
 			FileOutputStream ficheroPDF = new FileOutputStream("clientes.pdf");
@@ -299,7 +303,9 @@ public class ModeloCliente
 			{
 				tabla.addCell(datos.get(i));
 			}
-			
+			parrafo.setAlignment(Element.ALIGN_CENTER);
+			documento.add(parrafo);
+			documento.add(new Paragraph("\n"));
 			documento.add(tabla);
 			documento.close();
 			
