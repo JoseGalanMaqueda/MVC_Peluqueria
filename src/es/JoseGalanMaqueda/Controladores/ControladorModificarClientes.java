@@ -8,7 +8,8 @@ import java.awt.event.WindowListener;
 import es.JoseGalanMaqueda.modelo.ModeloCliente;
 import es.JoseGalanMaqueda.vistas.ModificarCliente;
 
-public class ControladorModificarClientes implements WindowListener, ActionListener {
+public class ControladorModificarClientes implements WindowListener, ActionListener 
+{
 	
 	// ===================== ATRIBUTOS ===============================
 	ModificarCliente vistaModificarCliente;
@@ -16,7 +17,8 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 	String eleccionDos="";
 	
 	// ====================== CONSTRUCTOR =================================
-	public ControladorModificarClientes(ModificarCliente vistaModificarCliente, ModeloCliente modeloCliente) {
+	public ControladorModificarClientes(ModificarCliente vistaModificarCliente, ModeloCliente modeloCliente) 
+	{
 		this.vistaModificarCliente = vistaModificarCliente;
 		this.modeloCliente = modeloCliente;
 		
@@ -103,7 +105,9 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 			{
 				vistaModificarCliente.creacionDialogoNotificacion(vistaModificarCliente.dlgClientesModificado, vistaModificarCliente.lblModificadoCorrectamente);
 				vistaModificarCliente.dlgClientesModificado.setVisible(true);
-			}else {
+			}
+			else 
+			{
 				vistaModificarCliente.lblErrorModificarCliente.setText("Error al Insertar");
 				vistaModificarCliente.dlgErrorModificarCliente.setVisible(true);
 			}
@@ -162,7 +166,8 @@ public class ControladorModificarClientes implements WindowListener, ActionListe
 	public void windowDeactivated(WindowEvent e) {}
 	
 	// ============================== CARGAR DATOS VENTANA =============================================
-	public void cargarDatosVentana(String[] datos) {
+	public void cargarDatosVentana(String[] datos) 
+	{
 		vistaModificarCliente.txtIdModificacionClientesDos.setText(datos[0]);
 		vistaModificarCliente.txtNombreModificacionClientesDos.setText(datos[1]);
 		vistaModificarCliente.txtApellidosModificacionClientesDos.setText(datos[2]);
