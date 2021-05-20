@@ -17,7 +17,8 @@ public class ControladorAltaClientes implements WindowListener, ActionListener, 
 	String eleccion;
 	
 	// =============================== CONSTRUCTOR VISTA ALTA CLIENTES Y MODELO CLIENTES ===================================
-	public ControladorAltaClientes(AltaClientes altaCliente, ModeloCliente modeloCliente) {
+	public ControladorAltaClientes(AltaClientes altaCliente, ModeloCliente modeloCliente) 
+	{
 		this.altaCliente = altaCliente;
 		this.modeloCliente = modeloCliente;
 		
@@ -71,7 +72,8 @@ public class ControladorAltaClientes implements WindowListener, ActionListener, 
 
 	// =============================== ITEM LISTENER ===================================
 	@Override
-	public void itemStateChanged(ItemEvent e) {
+	public void itemStateChanged(ItemEvent e) 
+	{
 		if ("Hombre".equals(e.getItem()))
 		{
 			if (e.getStateChange() == ItemEvent.SELECTED)
@@ -102,14 +104,19 @@ public class ControladorAltaClientes implements WindowListener, ActionListener, 
 				{
 					altaCliente.creacionDialogoNotificacion(altaCliente.dlgClienteInsertado, altaCliente.lblAnadidoCorrectamente);
 					altaCliente.dlgClienteInsertado.setVisible(true);
-				}else {
+				}
+				else 
+				{
 					altaCliente.lblErrorAnadidoCliente.setText("Error al Insertar");
 					altaCliente.dlgErrorInsertarCliente.setVisible(true);
 				}
-			}else {
+			}
+			else 
+			{
 				altaCliente.dlgErrorInsertarCliente.setVisible(true);
 			}
-		}else if (arg0.getSource().equals(altaCliente.btnCancelarAltaClientes)) // BOTON CANCELAR ALTA CLIENTES
+		}
+		else if (arg0.getSource().equals(altaCliente.btnCancelarAltaClientes)) // BOTON CANCELAR ALTA CLIENTES
 		{
 			altaCliente.frmAltaClientes.setVisible(false);
 		}
