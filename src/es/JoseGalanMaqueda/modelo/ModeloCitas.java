@@ -145,15 +145,15 @@ public class ModeloCitas
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			sentencia = "select citas.idCita, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'\n"
+			sentencia = "select citas.idCita as id, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'\n"
 					+ "from citas \n"
 					+ "	join clientes on citas.idClienteFK = clientes.idCliente\n"
-					+ "order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d');";
+					+ "order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'), id;";
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			rs = statement.executeQuery(sentencia);
 			while (rs.next()) 
 			{
-				datos.add(rs.getString("idCita"));
+				datos.add(rs.getString("id"));
 				datos.add(rs.getString("Fecha"));
 				datos.add(rs.getString("Hora"));
 				datos.add(rs.getString("Nombre Clientes"));
@@ -178,7 +178,7 @@ public class ModeloCitas
 			PdfWriter.getInstance(documento, ficheroPDF).setInitialLeading(20);
 			documento.open();
 			PdfPTable tabla = new PdfPTable(4);
-			tabla.addCell("idCita");
+			tabla.addCell("id");
 			tabla.addCell("Fecha");
 			tabla.addCell("Hora");
 			tabla.addCell("Nombre Clientes");
