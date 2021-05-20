@@ -18,7 +18,7 @@ public class AltaClientes
 	Label lblNombreAltaCliente = new Label("Nombre:");
 	Label lblApellidosAltaClientes = new Label("Apellidos:");
 	Label lblDniAltaClientes = new Label("DNI:");
-	Label lblDireccionAltaClientes = new Label("Dirección:");
+	Label lblDireccionAltaClientes = new Label("Direcciï¿½n:");
 	Label lblSexoAltaClientes = new Label("Sexo:");
 	public TextField txtNombreAltaClientes = new TextField(20);
 	public TextField txtApellidosAltaClientes = new TextField(20);
@@ -45,13 +45,14 @@ public class AltaClientes
 
 	// ============================== DIALOGO NOTIFICACION ==================================
 	public Dialog dlgClienteInsertado = new Dialog(frmAltaClientes, "Operacion Correcta", true);
-	public Label lblAnadidoCorrectamente = new Label("Cliente añadido correctamente");
+	public Label lblAnadidoCorrectamente = new Label("Cliente aï¿½adido correctamente");
 
 	// ============================== DIALOGO NOTIFICACION ==================================
 	public Dialog dlgErrorInsertarCliente = new Dialog(frmAltaClientes, "Error", true);
 	public Label lblErrorAnadidoCliente = new Label("Faltan Datos");
 
-	public AltaClientes() {
+	public AltaClientes() 
+	{
 		frmAltaClientes.setSize(400, 300);
 		frmAltaClientes.setLayout(new GridLayout(6,2));
 		pnlUno.add(lblNombreAltaCliente);
@@ -87,7 +88,8 @@ public class AltaClientes
 		frmAltaClientes.setVisible(true);
 	}
 
-	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl) {
+	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl) 
+	{
 		dialogo.setSize(230, 100);
 		dialogo.setLayout(new FlowLayout());
 		dialogo.setBackground(clFondo);

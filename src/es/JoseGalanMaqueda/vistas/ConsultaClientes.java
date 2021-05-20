@@ -18,7 +18,8 @@ public class ConsultaClientes {
 	Color clFondo = new Color(204,229,255);
 	
 	
-	public ConsultaClientes() {
+	public ConsultaClientes() 
+	{
 		frmConsulaClientes.setLayout(new FlowLayout());
 		frmConsulaClientes.setSize(450, 350);
 		frmConsulaClientes.setBackground(clFondo);

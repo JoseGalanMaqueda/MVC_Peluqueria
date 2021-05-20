@@ -68,7 +68,8 @@ public class AltaCitas
 	}
 	
 	// ============================================= DIALOGO NOTIFICACION ==========================================================
-	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl) {
+	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl) 
+	{
 		dialogo.setSize(230, 100);
 		dialogo.setLayout(new FlowLayout());
 		dialogo.setBackground(clFondo);

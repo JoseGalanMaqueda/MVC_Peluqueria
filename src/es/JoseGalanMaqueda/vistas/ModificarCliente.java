@@ -98,7 +98,8 @@ public class ModificarCliente {
 	public Label lblErrorModificarSeleccionarCliente = new Label("Selecciona un cliente válido");
 
 	// =================================== CARGAR VENTANA EDICICION DATOS CLIENTE====================================
-	public void cargarVentanaEdicionClientes() {
+	public void cargarVentanaEdicionClientes() 
+	{
 		frmModificacionClientesDos.setSize(400, 300);
 		frmModificacionClientesDos.setLayout(new GridLayout(7,2));
 		pnlTrece.add(lblIdModificacionClienteDos);
@@ -155,7 +156,8 @@ public class ModificarCliente {
 	}
 
 	// ======================================= CREAR DIALOGO NOTIFICACION ==================================================================
-	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl) {
+	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl)
+	{
 		dialogo.setSize(250, 100);
 		dialogo.setLayout(new FlowLayout());
 		dialogo.setBackground(clFondo);

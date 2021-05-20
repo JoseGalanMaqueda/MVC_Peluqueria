@@ -40,7 +40,8 @@ public class AltaTratamientos
 		frmAltaTratamientos.add(lblNombreAltaTratamiento);
 		frmAltaTratamientos.add(txtNombreAltaTratamiento);
 		frmAltaTratamientos.add(lblPrecioAltaTratamiento);
-		for (String d : precios) {
+		for (String d : precios)
+		{
 			listaPrecios.add(d);
 		}
 		listaPrecios.setBackground(Color.WHITE);
@@ -57,7 +58,8 @@ public class AltaTratamientos
 		frmAltaTratamientos.setVisible(true);
 	}
 
-	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl) {
+	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl) 
+	{
 		dialogo.setSize(250, 100);
 		dialogo.setLayout(new FlowLayout());
 		dialogo.setBackground(clFondo);

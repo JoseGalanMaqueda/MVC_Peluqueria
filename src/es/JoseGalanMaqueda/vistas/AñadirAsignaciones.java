@@ -32,7 +32,8 @@ public class AñadirAsignaciones
 	public Dialog dlgErrorInsertarTratamiento = new Dialog(frmAsignaciones, "Error", true);
 	public Label lblErrorAnadidoTratamiento = new Label("Error al añadir Tratamiento");
 	
-	public AñadirAsignaciones() {
+	public AñadirAsignaciones()
+	{
 		frmAsignaciones.setLayout(new FlowLayout());
 		frmAsignaciones.add(lblCitade);
 		frmAsignaciones.add(lblSeleccionaTratamiento);
@@ -53,7 +54,8 @@ public class AñadirAsignaciones
 		frmAsignaciones.setVisible(true);
 	}
 	
-	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl) {
+	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl)
+	{
 		dialogo.setSize(260, 100);
 		dialogo.setLayout(new FlowLayout());
 		dialogo.setBackground(clFondo);

@@ -112,7 +112,8 @@ public class ModificarTratamientos
 		frmModificarTratamientoDos.add(lblNombreModificacionTratamientoDos);
 		frmModificarTratamientoDos.add(txtNombreModificacionTratamientoDos);
 		frmModificarTratamientoDos.add(lblPrecioModificacionTratamientoDos);
-		for (String d : precios) {
+		for (String d : precios) 
+		{
 			listaPrecios.add((d));
 		}
 		listaPrecios.setBackground(Color.WHITE);

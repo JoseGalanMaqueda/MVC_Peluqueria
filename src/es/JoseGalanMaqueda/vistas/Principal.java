@@ -46,13 +46,15 @@ public class Principal
 	Menu mnuAsignarTratamientos = new Menu("Asignacion Tratamientos");
 	public MenuItem mniConsultarAsignacion = new MenuItem("Consultar Asignaciones");
 
-	public Principal(int tipo) {
+	public Principal(int tipo)
+	{
 		ventanaPrincipal.setSize(450, 400);
 		ventanaPrincipal.setLayout(new FlowLayout());
 		Principal.tipo = tipo; // Para tener el usuario que ha accedido a nuestra aplicacion
 
 		mnuCliente.add(mniAltaCliente);
-		if (tipo == 0) {
+		if (tipo == 0) 
+		{
 			mnuCliente.add(mniBajaCliente);
 			mnuCliente.add(mniModificacionCliente);
 			mnuCliente.add(mniConsultaCliente);
@@ -60,7 +62,8 @@ public class Principal
 		menuPrincipal.add(mnuCliente);
 
 		mnuTratamientos.add(mniAltaTratamiento);
-		if (tipo == 0) {
+		if (tipo == 0) 
+		{
 			mnuTratamientos.add(mniBajaTratamiento);
 			mnuTratamientos.add(mniModificacionTratamiento);
 			mnuTratamientos.add(mniConsultaTratamientos);
@@ -68,12 +71,14 @@ public class Principal
 		menuPrincipal.add(mnuTratamientos);
 
 		mnuCitas.add(mniAltaCitas);
-		if (tipo == 0) {
+		if (tipo == 0) 
+		{
 			mnuCitas.add(mniConsultaCitas);
 		}
 		menuPrincipal.add(mnuCitas);
 
-		if (tipo == 0) {
+		if (tipo == 0) 
+		{
 			mnuAsignarTratamientos.add(mniConsultarAsignacion);
 			menuPrincipal.add(mnuAsignarTratamientos);
 		}

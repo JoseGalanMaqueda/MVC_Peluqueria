@@ -14,7 +14,7 @@ public class Login
 {
 	public Frame frmVentanaLogin = new Frame("Login");
 	Label lblnombreUsuario = new Label("Usuario:");
-	Label lblpassword = new Label("Contraseña:");
+	Label lblpassword = new Label("Contraseï¿½a:");
 	public TextField txtNombreUsuario = new TextField(15);
 	public TextField txtPassword = new TextField(15);
 	public Button btnAcceder = new Button("Acceder");
@@ -56,7 +56,8 @@ public class Login
 		frmVentanaLogin.setVisible(true);
 	}
 
-	public void DialogoError() {
+	public void DialogoError() 
+	{
 		dlgError.setLayout(new FlowLayout());
 		dlgError.setSize(160, 120);
 		dlgError.add(lblError);
