@@ -15,12 +15,14 @@ public class ModeloUsuarios
 	Statement statement = null;
 	ResultSet rs = null;
 	
-	public int comprobacionUsuario(String nombreUsuario, String password) {
+	public int comprobacionUsuario(String nombreUsuario, String password) 
+	{
 		
 		int tipo = -1;
 		BaseDatos bd = new BaseDatos();
 		connection = bd.conectar();
-		try {
+		try 
+		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * from usuarios where nombreUsuario='"+nombreUsuario+"' AND claveUsuario = sha2('"+password+"',256);";
 			rs = statement.executeQuery(sentencia);
@@ -28,10 +30,14 @@ public class ModeloUsuarios
 			{
 				tipo = rs.getInt("tipoUsuario");
 			}
-		} catch (SQLException e2) {
+		}
+		catch (SQLException e2) 
+		{
 			tipo = -1;
 			System.out.println("Error 1.- " + e2.getMessage());
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 		return tipo;

@@ -6,7 +6,8 @@ import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class FicheroLog {
+public class FicheroLog 
+{
 	
 	public static void guardar(String usuario, String mensaje) 
 	{

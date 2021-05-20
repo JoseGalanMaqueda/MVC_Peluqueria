@@ -24,7 +24,8 @@ public class ModeloCliente
 	public boolean comprobacionDatosIntroducidos(TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) 
 	{
 		boolean booleano = false;
-		if( (nombre.getText().length()!=0) && (apellidos.getText().length() != 0) && (dni.getText().length()!=0) && (direccion.getText().length()!=0) && (eleccion.length()!=0) ) {
+		if( (nombre.getText().length()!=0) && (apellidos.getText().length() != 0) && (dni.getText().length()!=0) && (direccion.getText().length()!=0) && (eleccion.length()!=0) ) 
+		{
 			if (dni.getText().length() == 9)
 			{
 				booleano = true;
@@ -44,10 +45,13 @@ public class ModeloCliente
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
 
-		} catch (SQLException e1)
+		}
+		catch (SQLException e1)
 		{
 			insertado = false;
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 		return insertado;
@@ -58,20 +62,26 @@ public class ModeloCliente
 	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
-		try {
+		try 
+		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * FROM clientes WHERE nombreCliente LIKE '"+clienteBuscado+"%';";
 			rs = statement.executeQuery(sentencia);
 			cholistaClientes.removeAll();
 			cholistaClientes.add("Selecciona un Cliente..");
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				cholistaClientes.add(rs.getInt("idCliente")+"-"+rs.getString("nombreCliente")+"-"+rs.getString("apellidosCliente")+"-"+rs.getString("dniCliente"));
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			cholistaClientes.removeAll();
 			cholistaClientes.add("Problema al cargar los datos");
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 	}
@@ -81,26 +91,33 @@ public class ModeloCliente
 	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
-		try {
+		try 
+		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * FROM clientes;";
 			rs = statement.executeQuery(sentencia);
 			cholistaClientes.removeAll();
 			cholistaClientes.add("Selecciona un Cliente..");
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				cholistaClientes.add(rs.getInt("idCliente")+"-"+rs.getString("nombreCliente")+"-"+rs.getString("apellidosCliente")+"-"+rs.getString("dniCliente"));
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			cholistaClientes.removeAll();
 			cholistaClientes.add("Problema al cargar los datos");
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 	}
 
 	// ===================================== ELIMINAR CLIENTES ========================================================
-	public boolean eliminarClientes(Choice choListaCliente) {
+	public boolean eliminarClientes(Choice choListaCliente) 
+	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
 		boolean eliminado = true;
@@ -110,18 +127,22 @@ public class ModeloCliente
 			sentencia = "DELETE FROM clientes WHERE idCliente = "+choListaCliente.getSelectedItem().split("-")[0]+";";
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
-		} catch (SQLException e1)
+		}
+		catch (SQLException e1)
 		{
 			eliminado = false;
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 		return eliminado;
 	}
-	
+
 
 	// ====================================== METODOS ACTUALIZAR CLIENTES =========================================
-	public boolean actualizarCliente(TextField id,TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) {
+	public boolean actualizarCliente(TextField id,TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) 
+	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
 		boolean actualizado = true;
@@ -136,31 +157,41 @@ public class ModeloCliente
 					+ "WHERE idCliente = "+id.getText()+"";
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
-		} catch (SQLException e1)
+		}
+		catch (SQLException e1)
 		{
 			actualizado = false;
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 		return actualizado;
 	}
 
-	public String cargarDatosCliente(String id) {
+	public String cargarDatosCliente(String id) 
+	{
 		bd= new BaseDatos();
 		connection = bd.conectar();
 		String valores = "";
-		try {
+		try 
+		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * FROM clientes WHERE idCliente = "+id+";";
 			rs = statement.executeQuery(sentencia);
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				valores = rs.getInt("idCliente")+"-"+rs.getString("nombreCliente")+"-"+rs.getString("apellidosCliente")+"-"+
 						rs.getString("dniCliente")+"-"+rs.getString("direccionCliente")+"-"+rs.getString("sexoCliente");
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			valores = "";	
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 		return valores;
@@ -169,10 +200,12 @@ public class ModeloCliente
 
 
 	// ===================================== CONSULTAR CLIENTES ======================================================
-	public void consultaClientes(TextArea txaConsultaClientes) {
+	public void consultaClientes(TextArea txaConsultaClientes) 
+	{
 		bd= new BaseDatos();
 		connection = bd.conectar();
-		try {
+		try 
+		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * FROM clientes;";
@@ -182,15 +215,20 @@ public class ModeloCliente
 			txaConsultaClientes.setText("");
 			txaConsultaClientes.append("Id\tNombre\tApellidos\tDNI\tDireccion\tSexo\n");
 			txaConsultaClientes.append("====================================================\n");
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				txaConsultaClientes.append(rs.getInt("idCliente")+"\t"+rs.getString("nombreCliente")+"\t"+rs.getString("apellidosCliente")+"\t"+
 						rs.getString("dniCliente")+"\t"+rs.getString("direccionCliente")+"\t"+rs.getString("sexoCliente")+"\n");
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			txaConsultaClientes.selectAll();
 			txaConsultaClientes.setText("");
 			txaConsultaClientes.append("Error al cargar los datos");	
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 	}

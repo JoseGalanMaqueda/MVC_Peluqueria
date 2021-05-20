@@ -30,7 +30,8 @@ public class ModeloTratamientos
 		return booleano;
 	}
 	
-	public boolean insertarDatosTratamientos(TextField nombre, Choice precio, TextArea descripcion) {
+	public boolean insertarDatosTratamientos(TextField nombre, Choice precio, TextArea descripcion) 
+	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
 		boolean insertado = true;
@@ -41,10 +42,13 @@ public class ModeloTratamientos
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
 
-		} catch (SQLException e1)
+		}
+		catch (SQLException e1)
 		{
 			insertado = false;
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 		return insertado;
@@ -55,20 +59,26 @@ public class ModeloTratamientos
 	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
-		try {
+		try 
+		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * FROM tratamientos;";
 			rs = statement.executeQuery(sentencia);
 			choListaTratamientos.removeAll();
 			choListaTratamientos.add("Selecciona un Tratamiento..");
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				choListaTratamientos.add(rs.getInt("idTratamiento")+"-"+rs.getString("nombreTratamiento"));
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			choListaTratamientos.removeAll();
 			choListaTratamientos.add("Problema al cargar los datos");
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 	}
@@ -77,25 +87,32 @@ public class ModeloTratamientos
 	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
-		try {
+		try 
+		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * FROM tratamientos WHERE nombreTratamiento LIKE '"+TratamientoBuscado+"%';";
 			rs = statement.executeQuery(sentencia);
 			choListaTratamientos.removeAll();
 			choListaTratamientos.add("Selecciona un Tratamiento..");
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				choListaTratamientos.add(rs.getInt("idTratamiento")+"-"+rs.getString("nombreTratamiento"));
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			choListaTratamientos.removeAll();
 			choListaTratamientos.add("Problema al cargar los datos");
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 	}
 	
-	public boolean eliminarTratamiento(Choice choListaTratamientos) {
+	public boolean eliminarTratamiento(Choice choListaTratamientos) 
+	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
 		boolean eliminado = true;
@@ -105,31 +122,41 @@ public class ModeloTratamientos
 			sentencia = "DELETE FROM tratamientos WHERE idTratamiento = "+choListaTratamientos.getSelectedItem().split("-")[0]+";";
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
-		} catch (SQLException e1)
+		}
+		catch (SQLException e1)
 		{
 			eliminado = false;
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 		return eliminado;
 	}
 	
-	public String cargarDatosTratamientos(String id) {
+	public String cargarDatosTratamientos(String id) 
+	{
 		bd= new BaseDatos();
 		connection = bd.conectar();
 		String valores = "";
-		try {
+		try 
+		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * FROM tratamientos WHERE idTratamiento = "+id+";";
 			rs = statement.executeQuery(sentencia);
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				valores = rs.getInt("idTratamiento")+"-"+rs.getString("nombreTratamiento")+"-"+rs.getString("descripcionTratamiento")+"-"+
 						rs.getDouble("precioTratamiento");
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			valores = "";	
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 		return valores;
@@ -150,10 +177,13 @@ public class ModeloTratamientos
 					+ "WHERE idTratamiento = "+id.getText()+";";
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
-		} catch (SQLException e1)
+		}
+		catch (SQLException e1)
 		{
 			actualizado = false;
-		}finally {
+		}
+		finally 
+		{
 			bd.desconectar(connection);
 		}
 		
@@ -166,7 +196,8 @@ public class ModeloTratamientos
 	{
 		bd= new BaseDatos();
 		connection = bd.conectar();
-		try {
+		try 
+		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
 			sentencia = "SELECT * FROM tratamientos;";
@@ -176,11 +207,14 @@ public class ModeloTratamientos
 			txaConsultaTratamientos.setText("");
 			txaConsultaTratamientos.append("IdTratamiento\tNombre\tDescripcion\tPrecio\n");
 			txaConsultaTratamientos.append("=======================================================================\n");
-			while (rs.next()) {
+			while (rs.next()) 
+			{
 				txaConsultaTratamientos.append(rs.getInt("idTratamiento")+"\t"+rs.getString("nombreTratamiento")+"\t"+rs.getString("descripcionTratamiento")+"\t"+
 						rs.getDouble("precioTratamiento")+"0\n");
 			}
-		} catch (SQLException e) {
+		}
+		catch (SQLException e) 
+		{
 			txaConsultaTratamientos.selectAll();
 			txaConsultaTratamientos.setText("");
 			txaConsultaTratamientos.append("Error al cargar los datos");
