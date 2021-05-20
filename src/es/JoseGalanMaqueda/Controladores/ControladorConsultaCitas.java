@@ -61,7 +61,7 @@ public class ControladorConsultaCitas implements WindowListener, ActionListener
 		}
 		else if (e.getSource().equals(vista.btnExportarPdfCitas)) 
 		{
-			System.out.println("Exportar");
+			modelo.exportarAPDF(modelo.obtenerDatosParaExportar());
 		}
 	}
 }
