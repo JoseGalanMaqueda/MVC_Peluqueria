@@ -8,12 +8,14 @@ import java.awt.event.WindowListener;
 import es.JoseGalanMaqueda.modelo.ModeloCliente;
 import es.JoseGalanMaqueda.vistas.ConsultaClientes;
 
-public class ControladorConsultaClientes implements ActionListener, WindowListener {
+public class ControladorConsultaClientes implements ActionListener, WindowListener 
+{
 	
 	ConsultaClientes consultaClientes;
 	ModeloCliente modeloClientes;
 	
-	public ControladorConsultaClientes(ConsultaClientes consultaClientes, ModeloCliente modeloCliente) {
+	public ControladorConsultaClientes(ConsultaClientes consultaClientes, ModeloCliente modeloCliente) 
+	{
 		this.consultaClientes = consultaClientes;
 		this.modeloClientes = modeloCliente;
 		
@@ -28,8 +30,10 @@ public class ControladorConsultaClientes implements ActionListener, WindowListen
 	public void windowOpened(WindowEvent e) {}
 
 	@Override
-	public void windowClosing(WindowEvent e) {
-		if (consultaClientes.frmConsulaClientes.isActive()) {
+	public void windowClosing(WindowEvent e) 
+	{ 
+		if (consultaClientes.frmConsulaClientes.isActive()) 
+		{
 			consultaClientes.frmConsulaClientes.setVisible(false);
 		}
 	}
@@ -50,8 +54,10 @@ public class ControladorConsultaClientes implements ActionListener, WindowListen
 	public void windowDeactivated(WindowEvent e) {}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource().equals(consultaClientes.btnCancelarConsultaClientes)) {
+	public void actionPerformed(ActionEvent e) 
+	{
+		if (e.getSource().equals(consultaClientes.btnCancelarConsultaClientes)) 
+		{
 			consultaClientes.frmConsulaClientes.setVisible(false);
 		}
 	}
