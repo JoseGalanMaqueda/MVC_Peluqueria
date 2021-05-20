@@ -1,12 +1,23 @@
 package es.JoseGalanMaqueda.modelo;
 
 import java.awt.Choice;
+import java.awt.Desktop;
 import java.awt.TextArea;
 import java.awt.TextField;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfPTable;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import es.JoseGalanMaqueda.Controladores.ControladorLogin;
 
@@ -232,6 +243,89 @@ public class ModeloCliente
 			bd.desconectar(connection);
 		}
 	}
+	
+	
+	// ==================================== EXPORTAR A PDF ======================================
+	public ArrayList<String> obtenerDatosParaExportar()
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		ArrayList<String> datos = new ArrayList<>();
+		
+		try 
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM clientes;";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
+			rs = statement.executeQuery(sentencia);
+			while (rs.next()) 
+			{
+				datos.add(rs.getString("IdCliente"));
+				datos.add(rs.getString("nombreCliente"));
+				datos.add(rs.getString("apellidosCliente"));
+				datos.add(rs.getString("dniCliente"));
+				datos.add(rs.getString("direccionCliente"));
+				datos.add(rs.getString("sexoCliente"));
+			}
+			
+		}
+		catch (SQLException e) 
+		{
+			e.getMessage();
+		}
+		bd.desconectar(connection);
+		return datos;
+	}
+	
+	public void exportarAPDF(ArrayList<String> datos) 
+	{
+		Document documento = new Document();
+		
+		try
+		{
+			FileOutputStream ficheroPDF = new FileOutputStream("clientes.pdf");
+			PdfWriter.getInstance(documento, ficheroPDF).setInitialLeading(20);
+			documento.open();
+			PdfPTable tabla = new PdfPTable(6);
+			tabla.addCell("IdCliente");
+			tabla.addCell("Nombre");
+			tabla.addCell("Apellidos");
+			tabla.addCell("Dni");
+			tabla.addCell("Direccion");
+			tabla.addCell("Sexo");
+			
+			for (int i =0; i<datos.size(); i++) 
+			{
+				tabla.addCell(datos.get(i));
+			}
+			
+			documento.add(tabla);
+			documento.close();
+			
+			File path = new File("clientes.pdf");
+			Desktop.getDesktop().open(path);
+		}
+		catch (FileNotFoundException e) 
+		{
+			e.getMessage();
+		}
+		catch (DocumentException e) 
+		{
+			e.getMessage();
+		}
+		catch (IOException e) 
+		{
+			e.getMessage();
+		}
+		
+		
+		
+	}
+	
+	
+	
+	
 
 
 

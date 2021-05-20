@@ -109,3 +109,42 @@
 [19/05/2021 18:01:19][admin][SELECT * FROM clientes;]
 [19/05/2021 18:01:34][admin][SELECT * FROM tratamientos;]
 [19/05/2021 18:01:37][admin][SELECT * FROM citas;]
+[20/05/2021 15:09:25][admin][Acceso a Aplicación]
+[20/05/2021 15:09:28][admin][SELECT * FROM clientes;]
+[20/05/2021 15:09:31][admin][SELECT * FROM citas;]
+[20/05/2021 15:09:40][admin][SELECT * FROM tratamiento_citas;]
+[20/05/2021 15:33:23][admin][Acceso a Aplicación]
+[20/05/2021 15:33:26][admin][SELECT * FROM citas;]
+[20/05/2021 15:34:10][admin][Acceso a Aplicación]
+[20/05/2021 15:34:12][admin][select citas.idCita, date_format(citas.fechaCita, "%d-%m-%Y") as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'
+from citas 
+	join clientes on citas.idClienteFK = clientes.idCliente
+order by 2;]
+[20/05/2021 15:35:45][admin][Acceso a Aplicación]
+[20/05/2021 15:35:47][admin][select citas.idCita, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'
+from citas 
+	join clientes on citas.idClienteFK = clientes.idCliente
+order by 2;]
+[20/05/2021 15:36:50][admin][Acceso a Aplicación]
+[20/05/2021 15:36:52][admin][select citas.idCita, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'
+from citas 
+	join clientes on citas.idClienteFK = clientes.idCliente
+order by 2;]
+[20/05/2021 15:37:24][admin][Acceso a Aplicación]
+[20/05/2021 15:37:26][admin][select citas.idCita, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'
+from citas 
+	join clientes on citas.idClienteFK = clientes.idCliente
+order by 2;]
+[20/05/2021 15:42:16][admin][Acceso a Aplicación]
+[20/05/2021 15:42:18][admin][select citas.idCita, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'
+from citas 
+	join clientes on citas.idClienteFK = clientes.idCliente
+order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d');]
+[20/05/2021 15:43:39][admin][SELECT * FROM tratamiento_citas;]
+[20/05/2021 17:24:32][admin][SELECT * FROM tratamientos;]
+[20/05/2021 17:24:36][admin][SELECT * FROM clientes;]
+[20/05/2021 18:07:12][admin][Acceso a Aplicación]
+[20/05/2021 18:07:15][admin][SELECT * FROM clientes;]
+[20/05/2021 18:07:20][admin][SELECT * FROM clientes;]
+[20/05/2021 18:07:35][admin][SELECT * FROM clientes;]
+[20/05/2021 18:07:36][admin][SELECT * FROM clientes;]

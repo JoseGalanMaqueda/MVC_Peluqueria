@@ -60,6 +60,10 @@ public class ControladorConsultaClientes implements ActionListener, WindowListen
 		{
 			consultaClientes.frmConsulaClientes.setVisible(false);
 		}
+		else if (e.getSource().equals(consultaClientes.btnExportarPdfClientes)) 
+		{
+			modeloClientes.exportarAPDF(modeloClientes.obtenerDatosParaExportar());
+		}
 	}
 	
 }

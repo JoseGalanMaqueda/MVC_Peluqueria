@@ -91,20 +91,21 @@ public class ModeloCitas
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			sentencia = "SELECT * FROM citas;";
+			sentencia = "select citas.idCita, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'\n"
+					+ "from citas \n"
+					+ "	join clientes on citas.idClienteFK = clientes.idCliente\n"
+					+ "order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d');";
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			rs = statement.executeQuery(sentencia);
 			consulta.selectAll();
 			consulta.setText("");
-			consulta.append("IdCita\tFecha\tHora\tidCliente\n");
+			consulta.append("IdCita\tFecha\tHora\tNombre Clientes\n");
 			consulta.append("====================================================\n");
 			while (rs.next()) 
 			{
-				String fecha = rs.getDate("fechaCita")+"";
-				String [] fechaEuropea = fecha.split("-");
-				String[] quitarSegundos = rs.getString("horaCita").split(":");
-				consulta.append(rs.getInt("idCita")+"\t"+fechaEuropea[2]+"/"+fechaEuropea[1]+"/"+fechaEuropea[0]+"\t"+quitarSegundos[0]+":"+quitarSegundos[1]+"\t"+
-						rs.getInt("idClienteFK")+"\n");
+				String[] quitarSegundos = rs.getString("Hora").split(":");
+				consulta.append(rs.getInt("idCita")+"\t"+rs.getString("Fecha")+"\t"+quitarSegundos[0]+":"+quitarSegundos[1]+"\t"+
+						rs.getString("Nombre Clientes")+"\n");
 			}
 		}
 		catch (SQLException e) 
