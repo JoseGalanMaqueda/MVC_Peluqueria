@@ -9,7 +9,8 @@ import java.awt.Frame;
 import java.awt.Label;
 import java.awt.TextField;
 
-public class BajaClientes {
+public class BajaClientes 
+{
 	// ========================= ELIMINAR CLIENTE PRINCIPAL ===============================================
 	public Frame frmEliminarCliente = new Frame("Eliminar Cliente");
 	Color clFondo = new Color(204,229,255);

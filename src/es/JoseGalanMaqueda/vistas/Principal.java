@@ -40,6 +40,8 @@ public class Principal
 	// =================================== MENU CITAS ==========================================
 	Menu mnuCitas = new Menu("Citas");
 	public MenuItem mniAltaCitas = new MenuItem("Nueva Cita");
+	public MenuItem mniBajaCitas = new MenuItem("Eliminar Cita");
+	public MenuItem mniModificacionCitas = new MenuItem("Modificar Cita");
 	public MenuItem mniConsultaCitas = new MenuItem("Consultar Citas");
 
 	// ================================== MENU ASIGNAR TRATAMIENTOS ===================================
@@ -73,6 +75,8 @@ public class Principal
 		mnuCitas.add(mniAltaCitas);
 		if (tipo == 0) 
 		{
+			mnuCitas.add(mniBajaCitas);
+			mnuCitas.add(mniModificacionCitas);
 			mnuCitas.add(mniConsultaCitas);
 		}
 		menuPrincipal.add(mnuCitas);

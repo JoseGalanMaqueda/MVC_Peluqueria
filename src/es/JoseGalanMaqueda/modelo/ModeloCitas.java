@@ -27,7 +27,7 @@ import es.JoseGalanMaqueda.Controladores.ControladorLogin;
 
 public class ModeloCitas
 {
-	
+
 	// ====================================== BASE DATOS ==================================================================
 	BaseDatos bd = null;
 	String sentencia = "";
@@ -59,7 +59,7 @@ public class ModeloCitas
 		}
 		return insertado;
 	}
-	
+
 	public String idUltimaCita() 
 	{
 		bd = new BaseDatos();
@@ -86,7 +86,7 @@ public class ModeloCitas
 		}
 		return idCita;
 	}
-	
+
 	public boolean comprobacionCitas(TextField fecha, Choice listaClientes) 
 	{
 		boolean correcto = true;
@@ -95,9 +95,9 @@ public class ModeloCitas
 			correcto = false;
 		}
 		return correcto;
-		
+
 	}
-	
+
 	public void ConsultaCitas(TextArea consulta) 
 	{
 		bd= new BaseDatos();
@@ -134,13 +134,13 @@ public class ModeloCitas
 			bd.desconectar(connection);
 		}
 	}
-	
+
 	public ArrayList<String> obtenerDatosParaExportar()
 	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
 		ArrayList<String> datos = new ArrayList<>();
-		
+
 		try 
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
@@ -158,7 +158,7 @@ public class ModeloCitas
 				datos.add(rs.getString("Hora"));
 				datos.add(rs.getString("Nombre Clientes"));
 			}
-			
+
 		}
 		catch (SQLException e) 
 		{
@@ -167,7 +167,7 @@ public class ModeloCitas
 		bd.desconectar(connection);
 		return datos;
 	}
-	
+
 	public void exportarAPDF(ArrayList<String> datos) 
 	{
 		Document documento = new Document();
@@ -182,7 +182,7 @@ public class ModeloCitas
 			tabla.addCell("Fecha");
 			tabla.addCell("Hora");
 			tabla.addCell("Nombre Clientes");
-			
+
 			for (int i =0; i<datos.size(); i++) 
 			{
 				tabla.addCell(datos.get(i));
@@ -192,9 +192,9 @@ public class ModeloCitas
 			documento.add(new Paragraph("\n"));
 			documento.add(tabla);
 			documento.close();
-			
+
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, "Generacion PDF citas");
-			
+
 			File path = new File("citas.pdf");
 			Desktop.getDesktop().open(path);
 		}
@@ -210,9 +210,98 @@ public class ModeloCitas
 		{
 			e.getMessage();
 		}
-		
+
 	}
-	
+
+	// =============================== CARGAR DATOS EN LISTADOS ================================================================
+	public void cargarListadoClientes(Choice choListaCitas, String citaBuscada) 
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		String[] citaTransformada = citaBuscada.split("/");
+		try 
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM citas join clientes where citas.idClienteFK = clientes.idCliente AND fechaCita LIKE '"+citaTransformada[2]+"-"+citaTransformada[1]+"-"+citaTransformada[0]+"';";	
+			System.out.println(sentencia);
+			rs = statement.executeQuery(sentencia);
+			choListaCitas.removeAll();
+			choListaCitas.add("Selecciona una Cita..");
+			while (rs.next()) 
+			{
+				String[] quitarSegundos = rs.getString("horaCita").split(":");
+				choListaCitas.add(rs.getInt("idCita")+"-"+rs.getString("fechaCita")+"-"+quitarSegundos[0]+":"+quitarSegundos[1]+"-"+rs.getString("nombreCliente")+" "+rs.getString("apellidosCliente"));
+			}
+		}
+		catch (SQLException e) 
+		{
+			choListaCitas.removeAll();
+			choListaCitas.add("Problema al cargar los datos");
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+	}
+
+
+	public void cargarListadoClientes(Choice choListaCitas) 
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		try 
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "select citas.idCita as id, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'\n"
+					+ "from citas\n"
+					+ "	join clientes on citas.idClienteFK = clientes.idCliente\n"
+					+ "order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'), id;";
+			rs = statement.executeQuery(sentencia);
+			choListaCitas.removeAll();
+			choListaCitas.add("Selecciona una Cita..");
+			while (rs.next()) 
+			{
+				String[] quitarSegundos = rs.getString("Hora").split(":");
+				choListaCitas.add(rs.getInt("id")+"-"+rs.getString("Fecha")+"-"+quitarSegundos[0]+":"+quitarSegundos[1]+"-"+rs.getString("Nombre Clientes"));
+			}
+		}
+		catch (SQLException e) 
+		{
+			choListaCitas.removeAll();
+			choListaCitas.add("Problema al cargar los datos");
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+	}
+
+	// ===================================== ELIMINAR CLIENTES ========================================================
+	public boolean eliminarClientes(Choice choListaCita) 
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		boolean eliminado = true;
+		try
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			sentencia = "DELETE FROM citas WHERE idCita = "+choListaCita.getSelectedItem().split("-")[0]+";";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
+			statement.executeUpdate(sentencia);
+		}
+		catch (SQLException e1)
+		{
+			eliminado = false;
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+		return eliminado;
+	}
+
 }
 
 
