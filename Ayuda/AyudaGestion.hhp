@@ -1,0 +1,14 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=AyudaGestion.chm
+Contents file=Table of Contents.hhc
+Default topic=PasarNombre.html
+Display compile progress=No
+Language=0xc0a Español (España, internacional)
+
+
+[FILES]
+PasarNombre.html
+
+[INFOTYPES]
+

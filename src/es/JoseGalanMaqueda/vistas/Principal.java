@@ -47,10 +47,14 @@ public class Principal
 	// ================================== MENU ASIGNAR TRATAMIENTOS ===================================
 	Menu mnuAsignarTratamientos = new Menu("Asignacion Tratamientos");
 	public MenuItem mniConsultarAsignacion = new MenuItem("Consultar Asignaciones");
+	
+	// ================================= MENU AYUDA ============================================
+	Menu mnuAyuda = new Menu("Ayuda");
+	public MenuItem mniAyuda = new MenuItem("Ayuda");
 
 	public Principal(int tipo)
 	{
-		ventanaPrincipal.setSize(450, 400);
+		ventanaPrincipal.setSize(470, 400);
 		ventanaPrincipal.setLayout(new FlowLayout());
 		Principal.tipo = tipo; // Para tener el usuario que ha accedido a nuestra aplicacion
 
@@ -86,6 +90,9 @@ public class Principal
 			mnuAsignarTratamientos.add(mniConsultarAsignacion);
 			menuPrincipal.add(mnuAsignarTratamientos);
 		}
+		
+		mnuAyuda.add(mniAyuda);
+		menuPrincipal.add(mnuAyuda);
 
 
 		ventanaPrincipal.setMenuBar(menuPrincipal);

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<HTML>
+<HEAD>
+<meta name="GENERATOR" content="Microsoft&reg; HTML Help Workshop 4.1">
+<!-- Sitemap 1.0 -->
+</HEAD><BODY>
+<OBJECT type="text/site properties">
+	<param name="ImageType" value="Folder">
+</OBJECT>
+<UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Introduccion">
+		<param name="Local" value="PasarNombre.html">
+		</OBJECT>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="Contenido">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Login Incorrecto">
+			<param name="Local" value="ManualAyuda\LoginIncorrecto\LoginIncorrecto.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Login Correcto">
+			<param name="Local" value="ManualAyuda\LoginCorrecto\LoginCorrecto.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Menu Usuario Basico">
+			<param name="Local" value="ManualAyuda\MenuUsuarioBasico\MenuUsuarioBasico.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Menu Usuario Administrador">
+			<param name="Local" value="ManualAyuda\MenuUsuarioAdmin\MenuUsuarioAdministrador.html">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Clientes">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Alta Cliente">
+				<param name="Local" value="ManualAyuda\AltaClientes\AltaUsuario.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Eliminar Cliente">
+				<param name="Local" value="ManualAyuda\EliminarCliente\EliminarCliente.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Actualizar Cliente">
+				<param name="Local" value="ManualAyuda\Actulizar Cliente\ActualizarCliente.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Consultar Cliente">
+				<param name="Local" value="ManualAyuda\ConsultarCliente\ConsultarCliente.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Tratamientos">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Alta Tratamientos">
+				<param name="Local" value="ManualAyuda\AltaTratamientos\AltaTratamientos.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Eliminar Tratamientos">
+				<param name="Local" value="ManualAyuda\EliminarTratamientos\EliminarTratamientos.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Modificar Tratamientos">
+				<param name="Local" value="ManualAyuda\ModificarTratamientos\ModificarTratamientos.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Consulta Tratamientos">
+				<param name="Local" value="ManualAyuda\ConsultaTratamientos\ConsultaTratamientos.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Citas">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Alta Cita y Asignaciones Tratamientos">
+				<param name="Local" value="ManualAyuda\AltaCitasyAsignacionesTratamientos\AltaCitasyasignacionesdetratamientos.html">
+				</OBJECT>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Consulta Citas">
+				<param name="Local" value="ManualAyuda\ConsultaCitas\ConsultaCitas.html">
+				</OBJECT>
+		</UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="Asignaciones">
+			</OBJECT>
+		<UL>
+			<LI> <OBJECT type="text/sitemap">
+				<param name="Name" value="Consulta Asignaciones">
+				<param name="Local" value="ManualAyuda\ConsultaAsignaciones\ConsultaAsignaciones.html">
+				</OBJECT>
+		</UL>
+	</UL>
+</UL>
+</BODY></HTML>

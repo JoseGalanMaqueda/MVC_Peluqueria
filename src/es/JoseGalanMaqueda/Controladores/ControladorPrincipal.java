@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 
+import es.JoseGalanMaqueda.modelo.Ayuda;
 import es.JoseGalanMaqueda.modelo.ModeloCitas;
 import es.JoseGalanMaqueda.modelo.ModeloCliente;
 import es.JoseGalanMaqueda.modelo.ModeloTratamientos;
@@ -49,6 +50,8 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 		this.vistaPrincipal.mniModificacionCitas.addActionListener(this);
 		
 		this.vistaPrincipal.mniConsultarAsignacion.addActionListener(this);
+		
+		this.vistaPrincipal.mniAyuda.addActionListener(this);
 	}
 
 	@Override
@@ -151,6 +154,10 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 			ConsultarAsignaciones vista = new ConsultarAsignaciones();
 			ModeloTratamientosCitas modelo = new ModeloTratamientosCitas();
 			new ControladorConsultaAsignaciones(vista, modelo);
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniAyuda)) 
+		{
+			Ayuda.ejecutarAyuda();
 		}
 	}
 
