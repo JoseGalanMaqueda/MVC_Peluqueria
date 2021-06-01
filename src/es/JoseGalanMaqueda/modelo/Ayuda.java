@@ -9,7 +9,7 @@ public class Ayuda
 	{
 		try
 		{
-			Runtime.getRuntime().exec("hh.exe //Ayuda//AyudaGestion.chm");
+			Runtime.getRuntime().exec("hh.exe .\\Ayuda\\AyudaGestion.chm");
 		}
 		catch (IOException e)
 		{
