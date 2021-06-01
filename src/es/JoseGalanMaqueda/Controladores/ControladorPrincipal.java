@@ -27,10 +27,12 @@ import es.JoseGalanMaqueda.vistas.Principal;
 public class ControladorPrincipal implements ActionListener, WindowListener
 {
 	Principal vistaPrincipal;
+	ModeloCitas modelo;
 	
-	public ControladorPrincipal(Principal principal)
+	public ControladorPrincipal(Principal principal, ModeloCitas modelo)
 	{
 		this.vistaPrincipal = principal;
+		this.modelo = modelo;
 		
 		this.vistaPrincipal.ventanaPrincipal.addWindowListener(this);
 		
@@ -52,6 +54,8 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 		this.vistaPrincipal.mniConsultarAsignacion.addActionListener(this);
 		
 		this.vistaPrincipal.mniAyuda.addActionListener(this);
+		
+		this.modelo.consultaPrincipal(this.vistaPrincipal.txaCitasHoy);
 	}
 
 	@Override

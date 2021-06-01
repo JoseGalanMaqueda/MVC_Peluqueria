@@ -301,6 +301,57 @@ public class ModeloCitas
 		}
 		return eliminado;
 	}
+	
+	
+	public void consultaPrincipal(TextArea textArea) 
+	{
+		bd= new BaseDatos();
+		connection = bd.conectar();
+		String linea = "";
+		try 
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "select idCita as \"Id\", date_format(fechaCita, \"%d/%m/%Y\") as \"Fecha\", horaCita as \"Hora\", concat(clientes.nombreCliente, concat(\" \", clientes.apellidosCliente)) as \"Nombre Cliente\" \n"
+					+ "from citas join clientes on citas.idClienteFK = clientes.idCliente;";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
+			rs = statement.executeQuery(sentencia);
+			ResultSet rs2;
+			Statement statement2 = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			textArea.selectAll();
+			textArea.setText("");
+			textArea.append("IdCita\tFecha\tHora\tNombre Clientes\tTratamientos\n");
+			textArea.append("====================================================\n");
+			while (rs.next()) 
+			{
+				String[] quitarSegundos = rs.getString("Hora").split(":");
+				int idCita = rs.getInt("Id");
+				String sentencia2 = "select nombreTratamiento from tratamiento_citas\n"
+						+ "join tratamientos on tratamientos.idTratamiento = tratamiento_citas.idTratamientoFK\n"
+						+ "where idCitaFk = "+idCita+";";
+				rs2 = statement2.executeQuery(sentencia2);
+				linea = rs.getInt("Id")+"\t"+rs.getString("Fecha")+"\t"+quitarSegundos[0]+":"+quitarSegundos[1]+"\t"+ rs.getString("Nombre Cliente") + "\t";
+				while(rs2.next()) 
+				{
+					
+					linea = linea + rs2.getString("NombreTratamiento") + ", ";
+					
+				}
+				textArea.append(linea + "\n");
+			}
+		}
+		catch (SQLException e) 
+		{
+			textArea.selectAll();
+			textArea.setText("");
+			textArea.append("Error al cargar los datos" + e.getMessage());	
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+	}
 
 }
 

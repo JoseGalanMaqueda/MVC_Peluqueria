@@ -15,7 +15,7 @@ public class Principal
 	//===================================== VENTANA PRINCIPAL ==================================
 	public Frame ventanaPrincipal = new Frame("Peluqueria Forever Young");
 	Label lblProximasCitas = new Label("Proximas Citas:");
-	TextArea txaCitasHoy = new TextArea(16,54);
+	public TextArea txaCitasHoy = new TextArea(16,54);
 	public Button btnActualizar = new Button("Actualizar Citas");
 	Color clFondo = new Color(204,229,255);
 	public static int tipo;
