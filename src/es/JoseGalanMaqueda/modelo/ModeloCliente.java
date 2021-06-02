@@ -100,6 +100,33 @@ public class ModeloCliente
 			bd.desconectar(connection);
 		}
 	}
+	
+	public String cargarDatoCliente(String clienteBuscado) 
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		String datosCliente= "";
+		try 
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM clientes WHERE idCliente LIKE "+clienteBuscado+";";
+			rs = statement.executeQuery(sentencia);
+			while (rs.next()) 
+			{
+				datosCliente = rs.getInt("idCliente")+"-"+rs.getString("nombreCliente")+"-"+rs.getString("apellidosCliente")+"-"+rs.getString("dniCliente");
+			}
+		}
+		catch (SQLException e) 
+		{
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+		
+		return datosCliente;
+	}
 
 
 	public void cargarListadoClientes(Choice cholistaClientes) 

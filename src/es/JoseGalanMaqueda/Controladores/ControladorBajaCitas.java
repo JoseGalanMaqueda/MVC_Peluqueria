@@ -29,7 +29,7 @@ public class ControladorBajaCitas implements WindowListener, ActionListener
 		this.vista.dlgErrorEliminar.addWindowListener(this);
 		this.vista.dlgEliminadoCorrecto.addWindowListener(this);
 		
-		modelo.cargarListadoClientes(vista.choListaCita);
+		modelo.cargarListadoCitas(vista.choListaCita);
 	}
 
 	@Override
@@ -45,7 +45,7 @@ public class ControladorBajaCitas implements WindowListener, ActionListener
 		}
 		else if (e.getSource().equals(vista.btnBuscarCita)) 
 		{
-			modelo.cargarListadoClientes(vista.choListaCita, vista.txtBuscarCita.getText());
+			modelo.cargarListadoCitas(vista.choListaCita, vista.txtBuscarCita.getText());
 		}
 		else if (e.getSource().equals(vista.btnEliminar)) 
 		{

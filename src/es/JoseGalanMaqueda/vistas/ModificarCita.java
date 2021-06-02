@@ -9,6 +9,10 @@ import java.awt.Frame;
 import java.awt.Label;
 import java.awt.TextField;
 
+import es.JoseGalanMaqueda.Controladores.ControladorModificarCita;
+import es.JoseGalanMaqueda.modelo.ModeloCitas;
+import es.JoseGalanMaqueda.modelo.ModeloCliente;
+
 public class ModificarCita 
 {
 	// ========================= MODIFICAR CLIENTE PRINCIPAL ===============================================
@@ -40,6 +44,20 @@ public class ModificarCita
 	// ============================== DIALOGO NOTIFICACION ==================================
 	public Dialog dlgErrorModificarSeleccionarCita = new Dialog(frmModificarCitaUno, "Error", true);
 	public Label lblErrorModificarSeleccionarCita = new Label("Selecciona una cita válido");
+	
+	// ================================= MODIFICAR CITA DOS ===================================
+	public Frame frmModificarCitaDos = new Frame("Alta Citas");
+	Label lblFechaCitas = new Label("Fecha:");
+	Label lblHoraCitas = new Label("Hora:");
+	Label lblSeleccionaCliente = new Label("Selecciona un Cliente:");
+	Label lblIdCita = new Label("Id:");
+	public Choice cholistaClientes = new Choice();
+	public Choice cholistaHoras = new Choice();
+	public TextField txtIdCita = new TextField(5);
+	public TextField txtFecha = new TextField(15);
+	public Button btnModificarDos = new Button("Modificar");
+	public Button btnCancelarCitas = new Button("Cancelar");
+	String[] horas = {"9:00","9:30","10:00", "10:30","11:00","11:30","12:00","12:30","13:00","13:30","17:00","17:30","18:00", "18:30","19:00","19:30","20:00"};
 
 	public ModificarCita() 
 	{
@@ -60,8 +78,64 @@ public class ModificarCita
 		frmModificarCitaUno.setLocationRelativeTo(null);
 		frmModificarCitaUno.setVisible(true);
 	}
+	
+	public void ventanaModificacion() {
+		frmModificarCitaDos.setBackground(clFondo);
+		frmModificarCitaDos.setSize(400, 170);
+		frmModificarCitaDos.setLayout(new FlowLayout());
+		frmModificarCitaDos.add(lblIdCita);
+		txtIdCita.setEditable(false);
+		frmModificarCitaDos.add(txtIdCita);
+		frmModificarCitaDos.add(lblFechaCitas);
+		frmModificarCitaDos.add(txtFecha);
+		frmModificarCitaDos.add(lblHoraCitas);
+		for (String s : horas) 
+		{
+			cholistaHoras.add(s);
+		}
+		cholistaHoras.setBackground(Color.WHITE);
+		frmModificarCitaDos.add(cholistaHoras);
+		frmModificarCitaDos.add(lblSeleccionaCliente);
+		cholistaClientes.setBackground(Color.WHITE);
+		frmModificarCitaDos.add(cholistaClientes);
+		btnModificarDos.setBackground(Color.WHITE);
+		frmModificarCitaDos.add(btnModificarDos);
+		btnCancelarCitas.setBackground(Color.WHITE);
+		frmModificarCitaDos.add(btnCancelarCitas);
+		frmModificarCitaDos.setLocationRelativeTo(null);
+		frmModificarCitaDos.setResizable(false);
+		frmModificarCitaDos.setVisible(true);
+	}
+	
+	// ====================================== CREAR VENTANA CONFIRMACION =====================================================================
+	public void creacionVentanaConfirmacion(Frame ventana, Label lbl, Button btnUno, Button btnDos) 
+	{
+		ventana.setSize(250, 100);
+		ventana.setLayout(new FlowLayout());
+		ventana.setBackground(clFondo);
+		ventana.setLocationRelativeTo(null);
+		ventana.add(lbl);
+		btnUno.setBackground(Color.WHITE);
+		btnDos.setBackground(Color.WHITE);
+		ventana.add(btnUno);
+		ventana.add(btnDos);
+		ventana.setVisible(true);
+	}
 
+	// ======================================= CREAR DIALOGO NOTIFICACION ==================================================================
+	public void creacionDialogoNotificacion(Dialog dialogo, Label lbl)
+	{
+		dialogo.setSize(250, 100);
+		dialogo.setLayout(new FlowLayout());
+		dialogo.setBackground(clFondo);
+		dialogo.add(lbl);
+		dialogo.setLocationRelativeTo(null);
+	}
+	
 	public static void main(String[] args) {
-		new ModificarCita();
+		ModificarCita vista = new ModificarCita();
+		ModeloCitas modelo = new ModeloCitas();
+		ModeloCliente modeloCliente = new ModeloCliente();
+		new ControladorModificarCita(vista, modelo, modeloCliente);
 	}
 }

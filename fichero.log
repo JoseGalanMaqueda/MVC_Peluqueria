@@ -379,3 +379,10 @@ from citas join clientes on citas.idClienteFK = clientes.idCliente;]
 join citas on tratamiento_citas.idCitaFk = citas.idCita
 join tratamientos on tratamiento_citas.idTratamientoFK = tratamientos.idTratamiento
 order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'),id;]
+[02/06/2021 18:17:22][admin][Acceso a Aplicación]
+[02/06/2021 18:17:22][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[02/06/2021 20:28:59][null][UPDATE clientes SET fechaCita = '2020-01-01',horaCita = 17:00, idClienteFK = 5 WHERE idCliente = 12]
+[02/06/2021 20:35:46][null][UPDATE citas SET fechaCita = '2020-01-01',horaCita = 17:00, idClienteFK = 1 WHERE idCliente = 12]
+[02/06/2021 20:36:16][null][UPDATE citas SET fechaCita = '2020-01-01',horaCita = 17:00, idClienteFK = 1 WHERE idCita = 12]
+[02/06/2021 20:37:01][null][UPDATE citas SET fechaCita = '2020-01-01',horaCita = '17:00', idClienteFK = 1 WHERE idCita = 12]

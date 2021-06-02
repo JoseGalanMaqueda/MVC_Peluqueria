@@ -106,7 +106,7 @@ public class ModeloCitas
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			sentencia = "select citas.idCita, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'\n"
+			sentencia = "select citas.idCita, date_format(citas.fechaCita, '%d/%m/%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'\n"
 					+ "from citas \n"
 					+ "	join clientes on citas.idClienteFK = clientes.idCliente\n"
 					+ "order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d');";
@@ -145,7 +145,7 @@ public class ModeloCitas
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			sentencia = "select citas.idCita as id, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'\n"
+			sentencia = "select citas.idCita as id, date_format(citas.fechaCita, '%d/%m/%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'\n"
 					+ "from citas \n"
 					+ "	join clientes on citas.idClienteFK = clientes.idCliente\n"
 					+ "order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'), id;";
@@ -214,7 +214,7 @@ public class ModeloCitas
 	}
 
 	// =============================== CARGAR DATOS EN LISTADOS ================================================================
-	public void cargarListadoClientes(Choice choListaCitas, String citaBuscada) 
+	public void cargarListadoCitas(Choice choListaCitas, String citaBuscada) 
 	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
@@ -223,7 +223,11 @@ public class ModeloCitas
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			sentencia = "SELECT * FROM citas join clientes where citas.idClienteFK = clientes.idCliente AND fechaCita LIKE '"+citaTransformada[2]+"-"+citaTransformada[1]+"-"+citaTransformada[0]+"';";	
+			sentencia = "SELECT idCita, date_format(citas.fechaCita, '%d/%m/%Y') as 'Fecha', horaCita,  concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes' \n"
+					+ "FROM citas \n"
+					+ "join clientes where citas.idClienteFK = clientes.idCliente \n"
+					+ "and fechaCita like '"+citaTransformada[2]+"-"+citaTransformada[1]+"-"+citaTransformada[0]+"'\n"
+					+ "order by horaCita;";
 			System.out.println(sentencia);
 			rs = statement.executeQuery(sentencia);
 			choListaCitas.removeAll();
@@ -231,7 +235,7 @@ public class ModeloCitas
 			while (rs.next()) 
 			{
 				String[] quitarSegundos = rs.getString("horaCita").split(":");
-				choListaCitas.add(rs.getInt("idCita")+"-"+rs.getString("fechaCita")+"-"+quitarSegundos[0]+":"+quitarSegundos[1]+"-"+rs.getString("nombreCliente")+" "+rs.getString("apellidosCliente"));
+				choListaCitas.add(rs.getInt("idCita")+"-"+rs.getString("Fecha")+"-"+quitarSegundos[0]+":"+quitarSegundos[1]+"-"+rs.getString("Nombre Clientes"));
 			}
 		}
 		catch (SQLException e) 
@@ -246,7 +250,7 @@ public class ModeloCitas
 	}
 
 
-	public void cargarListadoClientes(Choice choListaCitas) 
+	public void cargarListadoCitas(Choice choListaCitas) 
 	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
@@ -254,17 +258,17 @@ public class ModeloCitas
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			sentencia = "select citas.idCita as id, date_format(citas.fechaCita, '%d-%m-%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'\n"
-					+ "from citas\n"
-					+ "	join clientes on citas.idClienteFK = clientes.idCliente\n"
-					+ "order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'), id;";
+			sentencia = "SELECT idCita, date_format(citas.fechaCita, '%d/%m/%Y') as 'Fecha', horaCita,  concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes' \n"
+					+ "FROM citas \n"
+					+ "join clientes where citas.idClienteFK = clientes.idCliente \n"
+					+ "order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'), horaCita;";
 			rs = statement.executeQuery(sentencia);
 			choListaCitas.removeAll();
 			choListaCitas.add("Selecciona una Cita..");
 			while (rs.next()) 
 			{
-				String[] quitarSegundos = rs.getString("Hora").split(":");
-				choListaCitas.add(rs.getInt("id")+"-"+rs.getString("Fecha")+"-"+quitarSegundos[0]+":"+quitarSegundos[1]+"-"+rs.getString("Nombre Clientes"));
+				String[] quitarSegundos = rs.getString("horaCita").split(":");
+				choListaCitas.add(rs.getInt("idCita")+"-"+rs.getString("Fecha")+"-"+quitarSegundos[0]+":"+quitarSegundos[1]+"-"+rs.getString("Nombre Clientes"));
 			}
 		}
 		catch (SQLException e) 
@@ -301,8 +305,8 @@ public class ModeloCitas
 		}
 		return eliminado;
 	}
-	
-	
+
+
 	public void consultaPrincipal(TextArea textArea) 
 	{
 		bd= new BaseDatos();
@@ -334,9 +338,9 @@ public class ModeloCitas
 				linea = rs.getInt("Id")+"\t"+rs.getString("Fecha")+"\t"+quitarSegundos[0]+":"+quitarSegundos[1]+"\t"+ rs.getString("Nombre Cliente") + "\t";
 				while(rs2.next()) 
 				{
-					
+
 					linea = linea + rs2.getString("NombreTratamiento") + ", ";
-					
+
 				}
 				textArea.append(linea + "\n");
 			}
@@ -351,6 +355,62 @@ public class ModeloCitas
 		{
 			bd.desconectar(connection);
 		}
+	}
+
+	public String cargarDatosCitas(String id) 
+	{
+		bd= new BaseDatos();
+		connection = bd.conectar();
+		String valores = "";
+		try 
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM citas WHERE idCita = "+id+";";
+			rs = statement.executeQuery(sentencia);
+			while (rs.next()) 
+			{
+				valores = rs.getInt("idCita")+"-"+rs.getString("fechaCita")+"-"+rs.getString("horaCita")+"-"+rs.getInt("idClienteFK");
+			}
+		}
+		catch (SQLException e) 
+		{
+			valores = "";	
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+		return valores;
+	}
+
+	// ====================================== METODOS ACTUALIZAR CLIENTES =========================================
+	public boolean actualizarCita(TextField id,TextField fecha, Choice listaHoras, Choice listaClientes) 
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		boolean actualizado = true;
+		try
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			String[] fechaTransformada = fecha.getText().split("/");
+			sentencia = "UPDATE citas SET fechaCita = '"+fechaTransformada[2]+"-"+fechaTransformada[1]+"-"+fechaTransformada[0]+"',"
+					+ "horaCita = '"+listaHoras.getSelectedItem()+"',"
+					+ " idClienteFK = "+listaClientes.getSelectedItem().split("-")[0]+" "
+					+ "WHERE idCita = "+id.getText()+"";
+			System.out.println(sentencia);
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
+			statement.executeUpdate(sentencia);
+		}
+		catch (SQLException e1)
+		{
+			actualizado = false;
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+		return actualizado;
 	}
 
 }
