@@ -363,3 +363,19 @@ from citas join clientes on citas.idClienteFK = clientes.idCliente;]
 [02/06/2021 17:34:09][admin][DELETE FROM tratamiento_citas WHERE idTratamiento_Cita = 14;]
 [02/06/2021 17:34:23][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
 from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[02/06/2021 17:40:16][admin][Acceso a Aplicación]
+[02/06/2021 17:40:17][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[02/06/2021 17:40:19][admin][SELECT tratamiento_citas.idTratamiento_Cita as 'Id', concat(concat('[ ', date_format(citas.fechaCita, '%d-%m-%Y')),' ', citas.horaCita, ' ]') as 'Fecha y Hora Cita', tratamientos.nombreTratamiento as 'Nombre Tratamiento'
+ FROM tratamiento_citas
+join citas on tratamiento_citas.idCitaFk = citas.idCita
+join tratamientos on tratamiento_citas.idTratamientoFK = tratamientos.idTratamiento
+order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'),id;]
+[02/06/2021 17:41:11][admin][Acceso a Aplicación]
+[02/06/2021 17:41:12][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[02/06/2021 17:44:31][admin][SELECT tratamiento_citas.idTratamiento_Cita as 'Id', concat(concat('[ ', date_format(citas.fechaCita, '%d-%m-%Y')),' ', citas.horaCita, ' ]') as 'Fecha y Hora Cita', tratamientos.nombreTratamiento as 'Nombre Tratamiento'
+ FROM tratamiento_citas
+join citas on tratamiento_citas.idCitaFk = citas.idCita
+join tratamientos on tratamiento_citas.idTratamientoFK = tratamientos.idTratamiento
+order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'),id;]

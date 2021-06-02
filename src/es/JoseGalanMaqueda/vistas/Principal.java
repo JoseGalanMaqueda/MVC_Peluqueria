@@ -89,9 +89,9 @@ public class Principal
 
 		if (tipo == 0) 
 		{
-			mnuAsignarTratamientos.add(mniConsultarAsignacion);
 			mnuAsignarTratamientos.add(mniBajaAsignacion);
 			mnuAsignarTratamientos.add(mniModificacionAsignacion);
+			mnuAsignarTratamientos.add(mniConsultarAsignacion);
 			menuPrincipal.add(mnuAsignarTratamientos);
 		}
 		

@@ -96,7 +96,7 @@ public class ModeloTratamientosCitas
 		{
 			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
 					ResultSet.CONCUR_READ_ONLY);
-			sentencia = "SELECT tratamiento_citas.idTratamiento_Cita as 'Id', concat(concat('[ ', date_format(citas.fechaCita, '%d-%m-%Y')),' ', citas.horaCita, ' ]') as 'Fecha y Hora Cita', tratamientos.nombreTratamiento as 'Nombre Tratamiento'\n"
+			sentencia = "SELECT tratamiento_citas.idTratamiento_Cita as 'Id', concat(concat('[ ', date_format(citas.fechaCita, '%d/%m/%Y')),' ', citas.horaCita, ' ]') as 'Fecha y Hora Cita', tratamientos.nombreTratamiento as 'Nombre Tratamiento'\n"
 					+ " FROM tratamiento_citas\n"
 					+ "join citas on tratamiento_citas.idCitaFk = citas.idCita\n"
 					+ "join tratamientos on tratamiento_citas.idTratamientoFK = tratamientos.idTratamiento\n"
