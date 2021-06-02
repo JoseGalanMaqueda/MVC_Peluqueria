@@ -269,3 +269,6 @@ from citas join clientes on citas.idClienteFK = clientes.idCliente;]
 [01/06/2021 18:29:08][admin][Acceso a Aplicación]
 [01/06/2021 18:29:08][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
 from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[01/06/2021 18:31:18][admin][Acceso a Aplicación]
+[01/06/2021 18:31:18][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]

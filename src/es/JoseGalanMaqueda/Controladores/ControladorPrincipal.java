@@ -88,7 +88,11 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		if (arg0.getSource().equals(vistaPrincipal.mniAltaCliente))
+		if (arg0.getSource().equals(vistaPrincipal.btnActualizar)) 
+		{
+			Ayuda.ejecutarAyuda();
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniAltaCliente))
 		{
 			AltaClientes altaClientes = new AltaClientes();
 			ModeloCliente modeloClientes = new ModeloCliente();
