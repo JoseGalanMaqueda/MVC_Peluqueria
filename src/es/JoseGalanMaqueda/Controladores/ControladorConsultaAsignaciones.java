@@ -35,7 +35,7 @@ public class ControladorConsultaAsignaciones implements WindowListener, ActionLi
 		}
 		else if (e.getSource().equals(vista.btnExportarPdfAsignaciones)) 
 		{
-			System.out.println("exportar");
+			modelo.exportarAPDF(modelo.obtenerDatosParaExportar());
 		}
 	}
 

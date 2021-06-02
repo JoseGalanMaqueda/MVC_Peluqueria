@@ -46,6 +46,8 @@ public class Principal
 
 	// ================================== MENU ASIGNAR TRATAMIENTOS ===================================
 	Menu mnuAsignarTratamientos = new Menu("Asignacion Tratamientos");
+	public MenuItem mniBajaAsignacion = new MenuItem("Eliminar Asignacion");
+	public MenuItem mniModificacionAsignacion = new MenuItem("Modificar Asignacion");
 	public MenuItem mniConsultarAsignacion = new MenuItem("Consultar Asignaciones");
 	
 	// ================================= MENU AYUDA ============================================
@@ -88,6 +90,8 @@ public class Principal
 		if (tipo == 0) 
 		{
 			mnuAsignarTratamientos.add(mniConsultarAsignacion);
+			mnuAsignarTratamientos.add(mniBajaAsignacion);
+			mnuAsignarTratamientos.add(mniModificacionAsignacion);
 			menuPrincipal.add(mnuAsignarTratamientos);
 		}
 		

@@ -13,6 +13,7 @@ import es.JoseGalanMaqueda.modelo.ModeloTratamientosCitas;
 import es.JoseGalanMaqueda.vistas.AltaCitas;
 import es.JoseGalanMaqueda.vistas.AltaClientes;
 import es.JoseGalanMaqueda.vistas.AltaTratamientos;
+import es.JoseGalanMaqueda.vistas.BajaAsignaciones;
 import es.JoseGalanMaqueda.vistas.BajaCita;
 import es.JoseGalanMaqueda.vistas.BajaClientes;
 import es.JoseGalanMaqueda.vistas.BajaTratamientos;
@@ -52,8 +53,12 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 		this.vistaPrincipal.mniModificacionCitas.addActionListener(this);
 		
 		this.vistaPrincipal.mniConsultarAsignacion.addActionListener(this);
+		this.vistaPrincipal.mniBajaAsignacion.addActionListener(this);
+		this.vistaPrincipal.mniModificacionAsignacion.addActionListener(this);
 		
 		this.vistaPrincipal.mniAyuda.addActionListener(this);
+		
+		this.vistaPrincipal.btnActualizar.addActionListener(this);
 		
 		this.modelo.consultaPrincipal(this.vistaPrincipal.txaCitasHoy);
 	}
@@ -90,7 +95,7 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 	{
 		if (arg0.getSource().equals(vistaPrincipal.btnActualizar)) 
 		{
-			Ayuda.ejecutarAyuda();
+			this.modelo.consultaPrincipal(this.vistaPrincipal.txaCitasHoy);
 		}
 		else if (arg0.getSource().equals(vistaPrincipal.mniAltaCliente))
 		{
@@ -162,6 +167,12 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 			ConsultarAsignaciones vista = new ConsultarAsignaciones();
 			ModeloTratamientosCitas modelo = new ModeloTratamientosCitas();
 			new ControladorConsultaAsignaciones(vista, modelo);
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniBajaAsignacion)) 
+		{
+			BajaAsignaciones vista = new BajaAsignaciones();
+			ModeloTratamientosCitas modelo = new ModeloTratamientosCitas();
+			new ControladorBajaAsignaciones(vista, modelo);
 		}
 		else if (arg0.getSource().equals(vistaPrincipal.mniAyuda)) 
 		{
