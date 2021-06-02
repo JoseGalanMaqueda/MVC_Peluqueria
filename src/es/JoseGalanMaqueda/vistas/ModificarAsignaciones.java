@@ -40,7 +40,7 @@ public class ModificarAsignaciones
 
 		// ============================== DIALOGO NOTIFICACION ==================================
 		public Dialog dlgErrorModificarSeleccionarAsignacion = new Dialog(frmModificarAsignacionUno, "Error", true);
-		public Label lblErrorModificarSeleccionarAsignacion = new Label("Selecciona una cita válido");
+		public Label lblErrorModificarSeleccionarAsignacion = new Label("Selecciona una asignacion válido");
 
 		public ModificarAsignaciones() 
 		{
