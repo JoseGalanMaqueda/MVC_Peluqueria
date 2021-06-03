@@ -29,7 +29,6 @@ public class ControladorModificarAsignaciones implements ActionListener, WindowL
 
 		// ======= VENTANA ELECCION CITA =======
 		this.vista.frmModificarAsignacionUno.addWindowListener(this);
-		this.vista.btnBuscarAsignacion.addActionListener(this);
 		this.vista.btnModificar.addActionListener(this);
 		this.vista.btnCancelarModificar.addActionListener(this);
 		this.modelo.cargarListadoAsignaciones(this.vista.choListaAsignacion);
@@ -67,10 +66,6 @@ public class ControladorModificarAsignaciones implements ActionListener, WindowL
 		{
 			vista.frmModificarAsignacionUno.setVisible(false);
 		}
-		else if (e.getSource().equals(vista.btnBuscarAsignacion)) 
-		{
-			modelo.cargarListadoAsignaciones(vista.choListaCitas, vista.txtBuscarAsignacion.getText());
-		}
 		else if (e.getSource().equals(vista.btnModificar)) 
 		{
 			vista.creacionDialogoNotificacion(vista.dlgErrorModificarSeleccionarModificar, vista.lblErrorModificarSeleccionarModificar);
@@ -88,6 +83,36 @@ public class ControladorModificarAsignaciones implements ActionListener, WindowL
 		else if (e.getSource().equals(vista.btnCancelarModificarAsignacionDos)) 
 		{
 			vista.frmModificarAsignacionDos.setVisible(false);
+		}
+		else if (e.getSource().equals(vista.btnModificarAsignacionDos)) 
+		{
+			vista.creacionDialogoNotificacion(vista.dlgErrorModificar, vista.lblErrorModificar);
+			if (modelo.comprobacionDatosAsignaciones(vista.choListaCitas, vista.choListaTratamiento))
+			{
+				vista.creacionVentanaConfirmacion(vista.frmConfirmacionModificarAsignacion, vista.lblConfirmacionModificarAsignacion, vista.btnSiConfirmacionModificarAsignacion, vista.btnNoConfirmacionModificarAsignacion);
+			}
+			else 
+			{
+				vista.lblErrorModificar.setText("Faltan Datos");
+				vista.dlgErrorModificar.setVisible(true);
+			}
+		}
+		else if (e.getSource().equals(vista.btnNoConfirmacionModificarAsignacion)) 
+		{
+			vista.frmConfirmacionModificarAsignacion.setVisible(false);
+		}
+		else if (e.getSource().equals(vista.btnSiConfirmacionModificarAsignacion)) 
+		{
+			if (modelo.actualizarAsignaciones(vista.txtIdAsignacion,vista.choListaCitas,vista.choListaTratamiento))
+			{
+				vista.creacionDialogoNotificacion(vista.dlgModificadoCorrecto, vista.lblModificarCorrectamente);
+				vista.dlgModificadoCorrecto.setVisible(true);
+			}
+			else 
+			{
+				vista.lblErrorModificar.setText("Error al Insertar");
+				vista.dlgErrorModificar.setVisible(true);
+			}
 		}
 	}
 
@@ -146,12 +171,17 @@ public class ControladorModificarAsignaciones implements ActionListener, WindowL
 	public void cargarDatosVentana(String[] datos) 
 	{
 		vista.txtIdAsignacion.setText(datos[0]);
+		
 		String[] datosAsignacion = modelo.cargarDatosAsignaciones(datos[0]).split("-");
+		
 		modeloCitas.cargarListadoCitas(vista.choListaCitas);
 		modeloTratamientos.cargarListadoTratamientos(vista.choListaTratamiento);
+		
 		String cita = modeloCitas.cargarDatoCita(datosAsignacion[1]);
-		System.out.println(cita);
 		vista.choListaCitas.select(cita);
+		
+		String tratamiento = modeloTratamientos.cargarDatoTratamiento(datosAsignacion[2]);
+		vista.choListaTratamiento.select(tratamiento);
 	}
 
 }

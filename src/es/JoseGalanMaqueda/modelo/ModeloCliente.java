@@ -35,7 +35,7 @@ public class ModeloCliente
 	ResultSet rs = null;
 
 
-	// ================================ ALTA CLIENTES ===================================================
+	// ================================ COMPROBACION DATOS EN ALTA CLIENTES ===================================================
 	public boolean comprobacionDatosIntroducidos(TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) 
 	{
 		boolean booleano = false;
@@ -49,7 +49,9 @@ public class ModeloCliente
 		return booleano;
 	}
 
-	public boolean insertarDatosClientes(TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) {
+	//================================ INSERTA DATOS EN TABLA CLIENTES ======================================================================
+	public boolean insertarDatosClientes(TextField nombre, TextField apellidos, TextField dni, TextField direccion, String eleccion) 
+	{
 		bd = new BaseDatos();
 		connection = bd.conectar();
 		boolean insertado = true;
@@ -72,7 +74,7 @@ public class ModeloCliente
 		return insertado;
 	}
 
-	// =============================== CARGAR DATOS EN LISTADOS ================================================================
+	// =============================== CARGAR DATOS EN LISTADOS CON BUSQUEDA DE CLIENTE ================================================================
 	public void cargarListadoClientes(Choice cholistaClientes, String clienteBuscado) 
 	{
 		bd = new BaseDatos();
@@ -101,6 +103,7 @@ public class ModeloCliente
 		}
 	}
 	
+	// =================================== DATOS CLIENTE PARA SELECCIONAR EN LISTADO ====================================================================
 	public String cargarDatoCliente(String clienteBuscado) 
 	{
 		bd = new BaseDatos();
@@ -128,7 +131,8 @@ public class ModeloCliente
 		return datosCliente;
 	}
 
-
+	
+	// ==================================== CARGAR DATOS LISTADOS DE MANERA GENERICA ==========================================================================
 	public void cargarListadoClientes(Choice cholistaClientes) 
 	{
 		bd = new BaseDatos();
@@ -211,6 +215,7 @@ public class ModeloCliente
 		return actualizado;
 	}
 
+	// ============================================= CARGA DATOS EN LA VENTADA DE MODIFICICION DE CLIENTES =============================
 	public String cargarDatosCliente(String id) 
 	{
 		bd= new BaseDatos();
@@ -309,6 +314,7 @@ public class ModeloCliente
 		return datos;
 	}
 	
+	// =========================================== EXPORTA A PDF ==================================================
 	public void exportarAPDF(ArrayList<String> datos) 
 	{
 		Document documento = new Document();

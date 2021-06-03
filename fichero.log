@@ -397,3 +397,19 @@ from citas join clientes on citas.idClienteFK = clientes.idCliente;]
 from citas 
 	join clientes on citas.idClienteFK = clientes.idCliente
 order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d');]
+[03/06/2021 22:21:58][null][update tratamiento_citas set idCitaFK = 27, idTratamientoFK = 3
+where idTratamiento_Cita = java.awt.TextField[textfield0,70,36,59x23,text=3,selection=0-0];]
+[03/06/2021 22:22:56][null][update tratamiento_citas set idCitaFK = 27, idTratamientoFK = 3
+where idTratamiento_Cita = java.awt.TextField[textfield0,70,36,59x23,text=3,selection=0-0];]
+[03/06/2021 22:24:19][null][update tratamiento_citas set idCitaFK = 27, idTratamientoFK = 4
+where idTratamiento_Cita = 3;]
+[03/06/2021 22:26:16][admin][Acceso a Aplicación]
+[03/06/2021 22:26:16][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[03/06/2021 22:28:22][admin][Acceso a Aplicación]
+[03/06/2021 22:28:22][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[03/06/2021 22:28:40][admin][update tratamiento_citas set idCitaFK = 14, idTratamientoFK = 3
+where idTratamiento_Cita = 4;]
+[03/06/2021 22:30:28][admin][update tratamiento_citas set idCitaFK = 2, idTratamientoFK = 2
+where idTratamiento_Cita = 4;]

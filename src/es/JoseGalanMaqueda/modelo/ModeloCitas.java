@@ -35,6 +35,8 @@ public class ModeloCitas
 	Statement statement = null;
 	ResultSet rs = null;
 
+	
+	// ============================== INSERTA CITA ============================================================================
 	public boolean insertarCita(TextField fecha, Choice listahoras, Choice listaClientes) 
 	{
 		bd = new BaseDatos();
@@ -60,6 +62,7 @@ public class ModeloCitas
 		return insertado;
 	}
 
+	// ============================ OBTIENE ID ULTIMA CITA PARA SIGUIENTE VENTANA ALTA  ============================================
 	public String idUltimaCita() 
 	{
 		bd = new BaseDatos();
@@ -87,6 +90,7 @@ public class ModeloCitas
 		return idCita;
 	}
 
+	// ======================================== COMPROBACION DATOS CITAS ANTES INSERTAR =============================================
 	public boolean comprobacionCitas(TextField fecha, Choice listaClientes) 
 	{
 		boolean correcto = true;
@@ -98,6 +102,7 @@ public class ModeloCitas
 
 	}
 
+	// ======================================= CONSULTA DATOS CITAS ================================================================
 	public void ConsultaCitas(TextArea consulta) 
 	{
 		bd= new BaseDatos();
@@ -135,6 +140,8 @@ public class ModeloCitas
 		}
 	}
 
+	
+	// ========================================== OBTIENE DATOS PARA LUEGO EXPORTARLOS A PDF ===========================================================
 	public ArrayList<String> obtenerDatosParaExportar()
 	{
 		bd = new BaseDatos();
@@ -168,6 +175,7 @@ public class ModeloCitas
 		return datos;
 	}
 
+	// ====================================== EXPORTA A PDF =====================================================================================
 	public void exportarAPDF(ArrayList<String> datos) 
 	{
 		Document documento = new Document();
@@ -213,7 +221,7 @@ public class ModeloCitas
 
 	}
 
-	// =============================== CARGAR DATOS EN LISTADOS ================================================================
+	// =============================== CARGAR DATOS EN LISTADO FILTRANDO POR BUSQUEDA ================================================================
 	public void cargarListadoCitas(Choice choListaCitas, String citaBuscada) 
 	{
 		bd = new BaseDatos();
@@ -250,6 +258,7 @@ public class ModeloCitas
 	}
 
 
+	// ====================================== CARGA LISTADO DE MANERA GENERICA ============================================================
 	public void cargarListadoCitas(Choice choListaCitas) 
 	{
 		bd = new BaseDatos();
@@ -306,7 +315,7 @@ public class ModeloCitas
 		return eliminado;
 	}
 
-
+	// ===================================== CONSULTA PANTALLA PRINCIPAL ===================================================
 	public void consultaPrincipal(TextArea textArea) 
 	{
 		bd= new BaseDatos();
@@ -357,6 +366,7 @@ public class ModeloCitas
 		}
 	}
 
+	// ============================= DATOS PARA PONERLOS EN VENTANA MODIFICACION CITAS =======================================================
 	public String cargarDatosCitas(String id) 
 	{
 		bd= new BaseDatos();
@@ -384,7 +394,7 @@ public class ModeloCitas
 		return valores;
 	}
 
-	// ====================================== METODOS ACTUALIZAR CLIENTES =========================================
+	// ====================================== METODOS ACTUALIZAR CITAS =========================================
 	public boolean actualizarCita(TextField id,TextField fecha, Choice listaHoras, Choice listaClientes) 
 	{
 		bd = new BaseDatos();
@@ -412,6 +422,7 @@ public class ModeloCitas
 		return actualizado;
 	}
 	
+	// ============================== CARGA CITA PARA LUEGO SELECCIONARLAS DENTRO DE LA LISTA DE MODIFICACION ===============================================
 	public String cargarDatoCita(String citaBuscada) 
 	{
 		bd = new BaseDatos();

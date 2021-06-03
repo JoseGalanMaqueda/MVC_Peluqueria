@@ -3,6 +3,7 @@ package es.JoseGalanMaqueda.modelo;
 import java.awt.Choice;
 import java.awt.Desktop;
 import java.awt.TextArea;
+import java.awt.TextField;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -33,6 +34,7 @@ public class ModeloTratamientosCitas
 	Statement statement = null;
 	ResultSet rs = null;
 
+	//================================ RELLENA TEXTAREA DE ALTA ASIGNACIONES ==================================================================
 	public void rellenarTextArea(String citaSeleccionada, TextArea listadoTratamientos) 
 	{
 		bd= new BaseDatos();
@@ -64,6 +66,7 @@ public class ModeloTratamientosCitas
 		}
 	}
 
+	//=================================== ALTA ASIGNACIONES ===============================================================================
 	public boolean insertarTratamientoCita(String datoCita, Choice listaTratamiento) 
 	{
 		bd = new BaseDatos();
@@ -88,6 +91,7 @@ public class ModeloTratamientosCitas
 	}
 
 
+	//=================================== CONSULTA ASIGNACIONES =====================================================================
 	public void consultarAsignaciones(TextArea consultaAsignaciones) 
 	{
 		bd= new BaseDatos();
@@ -124,6 +128,8 @@ public class ModeloTratamientosCitas
 		}
 	}
 
+	
+	// ======================================= PREPARA ARRAY ANTES DE EXPORTAR A PDF =====================================================
 	public ArrayList<String> obtenerDatosParaExportar()
 	{
 		bd = new BaseDatos();
@@ -157,6 +163,8 @@ public class ModeloTratamientosCitas
 		return datos;
 	}
 
+	
+	// ====================================== EXPORTA A PDF ==========================================
 	public void exportarAPDF(ArrayList<String> datos) 
 	{
 		Document documento = new Document();
@@ -201,7 +209,7 @@ public class ModeloTratamientosCitas
 
 	}
 
-	// =============================== CARGAR DATOS EN LISTADOS ================================================================
+	// =============================== CARGAR DATOS EN LISTADO CUANDO FILTRA POR BUSQUEDA ================================================================
 	public void cargarListadoAsignaciones(Choice cholistaAsignaciones, String AsignacionBuscada) 
 	{
 		bd = new BaseDatos();
@@ -236,6 +244,7 @@ public class ModeloTratamientosCitas
 	}
 
 
+	// ============================ CARGA DATOS ASIGNACIONES DE MANERA GENERICA =====================================================================
 	public void cargarListadoAsignaciones(Choice choListaAsignaciones) 
 	{
 		bd = new BaseDatos();
@@ -292,6 +301,8 @@ public class ModeloTratamientosCitas
 		return eliminado;
 	}
 	
+	
+	// ========================================== CARGA DATOS ASIGNACIONES EN MODIFICAR ASIGNACIONES =================================
 	public String cargarDatosAsignaciones(String id) 
 	{
 		bd= new BaseDatos();
@@ -316,5 +327,47 @@ public class ModeloTratamientosCitas
 			bd.desconectar(connection);
 		}
 		return valores;
+	}
+	
+	// ====================================== METODOS ACTUALIZAR ASIGNACIONES =========================================
+	public boolean actualizarAsignaciones(TextField id,Choice listaCitas, Choice listaTratamientos) 
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		boolean actualizado = true;
+		try
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+			sentencia = "update tratamiento_citas set idCitaFK = "+listaCitas.getSelectedItem().split("-")[0]+", idTratamientoFK = "+listaTratamientos.getSelectedItem().split("-")[0]+"\n"
+					+ "where idTratamiento_Cita = "+id.getText()+";";
+			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
+			statement.executeUpdate(sentencia);
+		}
+		catch (SQLException e1)
+		{
+			actualizado = false;
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+		return actualizado;
+	}
+	
+	// ================================== COMPROBACION DATOS CHOICE ANTES ACTUALIZAR DATOS ==============================================
+	public boolean comprobacionDatosAsignaciones(Choice listaCitas, Choice listaTratamientos) 
+	{ 
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		boolean actualizado = true;
+		if ((!listaCitas.getSelectedItem().equals("Selecciona una Cita.."))  && (!listaTratamientos.getSelectedItem().equals("Selecciona un Tratamiento..")) ) 
+		{
+			actualizado = true;
+		}
+		else 
+		{
+			actualizado = false;
+		}
+		return actualizado;
 	}
 }

@@ -21,6 +21,7 @@ import es.JoseGalanMaqueda.vistas.ConsultaClientes;
 import es.JoseGalanMaqueda.vistas.ConsultaTratamientos;
 import es.JoseGalanMaqueda.vistas.ConsultarAsignaciones;
 import es.JoseGalanMaqueda.vistas.ConsultarCitas;
+import es.JoseGalanMaqueda.vistas.ModificarAsignacion;
 import es.JoseGalanMaqueda.vistas.ModificarCita;
 import es.JoseGalanMaqueda.vistas.ModificarCliente;
 import es.JoseGalanMaqueda.vistas.ModificarTratamientos;
@@ -181,6 +182,14 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 			BajaAsignaciones vista = new BajaAsignaciones();
 			ModeloTratamientosCitas modelo = new ModeloTratamientosCitas();
 			new ControladorBajaAsignaciones(vista, modelo);
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniModificacionAsignacion)) 
+		{
+			ModificarAsignacion vista = new  ModificarAsignacion();
+			ModeloTratamientosCitas modelo = new ModeloTratamientosCitas();
+			ModeloCitas modeloCitas = new ModeloCitas();
+			ModeloTratamientos modeloTratamientos = new ModeloTratamientos();
+			new ControladorModificarAsignaciones(vista, modelo, modeloCitas, modeloTratamientos);
 		}
 		else if (arg0.getSource().equals(vistaPrincipal.mniAyuda)) 
 		{

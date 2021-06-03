@@ -9,23 +9,15 @@ import java.awt.Frame;
 import java.awt.Label;
 import java.awt.TextField;
 
-import es.JoseGalanMaqueda.Controladores.ControladorModificarAsignaciones;
-import es.JoseGalanMaqueda.modelo.ModeloCitas;
-import es.JoseGalanMaqueda.modelo.ModeloTratamientos;
-import es.JoseGalanMaqueda.modelo.ModeloTratamientosCitas;
-
 public class ModificarAsignacion 
 {
-	// ========================= ELIMINAR CLIENTE PRINCIPAL ===============================================
+	// ========================= MODIFICAR PRINCIPAL ===============================================
 	public Frame frmModificarAsignacionUno = new Frame("Modificar Asignacion");
 	Color clFondo = new Color(204,229,255);
 	Label lblSeleccionarModificarAsignacion = new Label("Selecciona asignacion a Modificar:");
 	public Choice choListaAsignacion = new Choice();
 	public Button btnModificar = new Button("Modificar");
 	public Button btnCancelarModificar = new Button("Cancelar");
-	Label lblBuscarAsignacion = new Label("Buscar Asignacion:");
-	public TextField txtBuscarAsignacion = new TextField(12);
-	public Button btnBuscarAsignacion = new Button("Buscar");
 
 
 	// ========================= CONFIRMACION ELIMINAR ====================================================
@@ -62,9 +54,6 @@ public class ModificarAsignacion
 		frmModificarAsignacionUno.setLayout(new FlowLayout());
 		frmModificarAsignacionUno.setSize(320, 170);
 		frmModificarAsignacionUno.setBackground(clFondo);
-		frmModificarAsignacionUno.add(lblBuscarAsignacion);
-		frmModificarAsignacionUno.add(txtBuscarAsignacion);
-		frmModificarAsignacionUno.add(btnBuscarAsignacion);
 		frmModificarAsignacionUno.add(lblSeleccionarModificarAsignacion);
 		choListaAsignacion.setBackground(Color.WHITE);
 		frmModificarAsignacionUno.add(choListaAsignacion);
@@ -95,6 +84,7 @@ public class ModificarAsignacion
 		btnModificarAsignacionDos.setBackground(Color.white);
 		frmModificarAsignacionDos.add(btnModificarAsignacionDos);
 		frmModificarAsignacionDos.add(btnCancelarModificarAsignacionDos);
+		frmModificarAsignacionDos.setLocationRelativeTo(null);
 		frmModificarAsignacionDos.setVisible(true);
 	}
 	
@@ -122,14 +112,5 @@ public class ModificarAsignacion
 		dialogo.add(lbl);
 		dialogo.setLocationRelativeTo(null);
 	}
-
-	public static void main(String[] args) {
-		ModificarAsignacion vista = new  ModificarAsignacion();
-		ModeloTratamientosCitas modelo = new ModeloTratamientosCitas();
-		ModeloCitas modeloCitas = new ModeloCitas();
-		ModeloTratamientos modeloTratamientos = new ModeloTratamientos();
-		new ControladorModificarAsignaciones(vista, modelo, modeloCitas, modeloTratamientos);
-	}
-
 
 }

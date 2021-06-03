@@ -35,7 +35,7 @@ public class ModeloTratamientos
 	ResultSet rs = null;
 	
 	
-	// ================================ INSERTAR TRATAMIENTOS ============================================
+	// ================================ COMPROBACION DATOS ANTES INSERTAR TRATAMIENTOS ============================================
 	public boolean comprobacionDatos(TextField nombre) 
 	{
 		boolean booleano = false;
@@ -45,6 +45,7 @@ public class ModeloTratamientos
 		return booleano;
 	}
 	
+	// ============================= INSERTAR DATOS DE TRATAMIENTOS =============================================================
 	public boolean insertarDatosTratamientos(TextField nombre, Choice precio, TextArea descripcion) 
 	{
 		bd = new BaseDatos();
@@ -69,7 +70,7 @@ public class ModeloTratamientos
 		return insertado;
 	}
 	
-	// ======================== ELIMINAR TRATAMIENTO =========================================
+	// ======================== CARGA LISTA TRATAMIENTOS DE MANERA GENERICA =========================================
 	public void cargarListadoTratamientos(Choice choListaTratamientos) 
 	{
 		bd = new BaseDatos();
@@ -98,6 +99,7 @@ public class ModeloTratamientos
 		}
 	}
 	
+	// ============================ CARGA LISTADO TRATAMIENTOS FILTRADOS POR BUSQUEDA ===================================================
 	public void cargarListadoTratamientos(Choice choListaTratamientos, String TratamientoBuscado) 
 	{
 		bd = new BaseDatos();
@@ -126,6 +128,7 @@ public class ModeloTratamientos
 		}
 	}
 	
+	// =========================== ELIMINAR TRATAMIENTO =====================================================================================
 	public boolean eliminarTratamiento(Choice choListaTratamientos) 
 	{
 		bd = new BaseDatos();
@@ -149,6 +152,8 @@ public class ModeloTratamientos
 		return eliminado;
 	}
 	
+	
+	// ======================================= CARGA DATOS TRATAMIENTOS PARA VENTANA MODIFICACION ==============================================
 	public String cargarDatosTratamientos(String id) 
 	{
 		bd= new BaseDatos();
@@ -178,6 +183,7 @@ public class ModeloTratamientos
 	}
 	
 	
+	// =================================== ACTUALIZACION DE TRATAMIENTOS ================================================================
 	public boolean actulizarTratamientos(TextField id, TextField nombre,Choice precios ,TextArea descripcion ) 
 	{
 		bd = new BaseDatos();
@@ -237,6 +243,7 @@ public class ModeloTratamientos
 		}
 	}
 	
+	// ================================ OBTIENE DATOS PARA EXPORTARLOS MEDIANTE PDF ====================================================================
 	public ArrayList<String> obtenerDatosParaExportar()
 	{
 		bd = new BaseDatos();
@@ -267,6 +274,8 @@ public class ModeloTratamientos
 		return datos;
 	}
 	
+	
+	// ==================================== EXPORTA A PDF ==================================================================================
 	public void exportarAPDF(ArrayList<String> datos) 
 	{
 		Document documento = new Document();
@@ -311,6 +320,33 @@ public class ModeloTratamientos
 		}
 		
 	}
+	
+	// ============================== CARGA TRATAMIENTO PARA LUEGO SELECCIONARLAS DENTRO DE LA LISTA DE MODIFICACION ===============================================
+		public String cargarDatoTratamiento(String idTratamiento) 
+		{
+			bd = new BaseDatos();
+			connection = bd.conectar();
+			String datosTratamiento= "";
+			try 
+			{
+				statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+				sentencia = "select * from tratamientos where idTratamiento like "+idTratamiento+";";
+				rs = statement.executeQuery(sentencia);
+				while (rs.next()) 
+				{
+					datosTratamiento = rs.getInt("idTratamiento")+"-"+rs.getString("nombreTratamiento");
+				}
+			}
+			catch (SQLException e) 
+			{
+			}
+			finally 
+			{
+				bd.desconectar(connection);
+			}
+			
+			return datosTratamiento;
+		}
 }
 
 
