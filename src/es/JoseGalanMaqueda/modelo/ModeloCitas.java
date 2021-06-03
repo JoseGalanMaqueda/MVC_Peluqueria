@@ -398,7 +398,6 @@ public class ModeloCitas
 					+ "horaCita = '"+listaHoras.getSelectedItem()+"',"
 					+ " idClienteFK = "+listaClientes.getSelectedItem().split("-")[0]+" "
 					+ "WHERE idCita = "+id.getText()+"";
-			System.out.println(sentencia);
 			FicheroLog.guardar(ControladorLogin.nombreUsuario, sentencia);
 			statement.executeUpdate(sentencia);
 		}

@@ -21,6 +21,7 @@ import es.JoseGalanMaqueda.vistas.ConsultaClientes;
 import es.JoseGalanMaqueda.vistas.ConsultaTratamientos;
 import es.JoseGalanMaqueda.vistas.ConsultarAsignaciones;
 import es.JoseGalanMaqueda.vistas.ConsultarCitas;
+import es.JoseGalanMaqueda.vistas.ModificarCita;
 import es.JoseGalanMaqueda.vistas.ModificarCliente;
 import es.JoseGalanMaqueda.vistas.ModificarTratamientos;
 import es.JoseGalanMaqueda.vistas.Principal;
@@ -155,6 +156,13 @@ public class ControladorPrincipal implements ActionListener, WindowListener
 			BajaCita vista = new BajaCita();
 			ModeloCitas modeloCitas = new ModeloCitas();
 			new ControladorBajaCitas(vista, modeloCitas);
+		}
+		else if (arg0.getSource().equals(vistaPrincipal.mniModificacionCitas)) 
+		{
+			ModificarCita vista = new ModificarCita();
+			ModeloCitas modelo = new ModeloCitas();
+			ModeloCliente modeloCliente = new ModeloCliente();
+			new ControladorModificarCita(vista, modelo, modeloCliente);
 		}
 		else if (arg0.getSource().equals(vistaPrincipal.mniConsultaCitas)) 
 		{

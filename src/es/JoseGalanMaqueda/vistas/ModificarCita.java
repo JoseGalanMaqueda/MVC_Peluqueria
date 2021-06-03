@@ -9,10 +9,6 @@ import java.awt.Frame;
 import java.awt.Label;
 import java.awt.TextField;
 
-import es.JoseGalanMaqueda.Controladores.ControladorModificarCita;
-import es.JoseGalanMaqueda.modelo.ModeloCitas;
-import es.JoseGalanMaqueda.modelo.ModeloCliente;
-
 public class ModificarCita 
 {
 	// ========================= MODIFICAR CLIENTE PRINCIPAL ===============================================
@@ -132,10 +128,4 @@ public class ModificarCita
 		dialogo.setLocationRelativeTo(null);
 	}
 	
-	public static void main(String[] args) {
-		ModificarCita vista = new ModificarCita();
-		ModeloCitas modelo = new ModeloCitas();
-		ModeloCliente modeloCliente = new ModeloCliente();
-		new ControladorModificarCita(vista, modelo, modeloCliente);
-	}
 }
