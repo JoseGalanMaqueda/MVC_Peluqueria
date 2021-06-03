@@ -411,6 +411,38 @@ public class ModeloCitas
 		}
 		return actualizado;
 	}
+	
+	public String cargarDatoCita(String citaBuscada) 
+	{
+		bd = new BaseDatos();
+		connection = bd.conectar();
+		String datosCita= "";
+		try 
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+					ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT idCita, date_format(citas.fechaCita, '%d/%m/%Y') as 'Fecha', horaCita,  concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes' \n"
+					+ "FROM citas\n"
+					+ "join clientes where citas.idClienteFK = clientes.idCliente\n"
+					+ "and idCita like "+citaBuscada+"\n"
+					+ "order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'), horaCita;";
+			rs = statement.executeQuery(sentencia);
+			while (rs.next()) 
+			{
+				String[] quitarSegundos = rs.getString("horaCita").split(":");
+				datosCita = rs.getInt("idCita")+"-"+rs.getString("Fecha")+"-"+quitarSegundos[0]+":"+quitarSegundos[1]+"-"+rs.getString("Nombre Clientes");
+			}
+		}
+		catch (SQLException e) 
+		{
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+		
+		return datosCita;
+	}
 
 }
 

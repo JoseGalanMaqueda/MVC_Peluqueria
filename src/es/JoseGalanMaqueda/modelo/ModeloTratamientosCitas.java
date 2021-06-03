@@ -291,4 +291,30 @@ public class ModeloTratamientosCitas
 		}
 		return eliminado;
 	}
+	
+	public String cargarDatosAsignaciones(String id) 
+	{
+		bd= new BaseDatos();
+		connection = bd.conectar();
+		String valores = "";
+		try 
+		{
+			statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			sentencia = "SELECT * FROM tratamiento_citas WHERE idTratamiento_Cita = "+id+";";
+			rs = statement.executeQuery(sentencia);
+			while (rs.next()) 
+			{
+				valores = rs.getInt("idTratamiento_Cita")+"-"+rs.getInt("idCitaFk")+"-"+rs.getInt("idTratamientoFK");
+			}
+		}
+		catch (SQLException e) 
+		{
+			valores = "";	
+		}
+		finally 
+		{
+			bd.desconectar(connection);
+		}
+		return valores;
+	}
 }
