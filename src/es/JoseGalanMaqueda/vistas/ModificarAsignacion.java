@@ -22,7 +22,7 @@ public class ModificarAsignacion
 
 	// ========================= CONFIRMACION ELIMINAR ====================================================
 	public Frame frmConfirmacionModificarAsignacion = new Frame("Confirmacion");
-	public Label lblConfirmacionModificarAsignacion = new Label("Estas seguro que quieres eliminarla?");
+	public Label lblConfirmacionModificarAsignacion = new Label("Estas seguro que quieres modificarla?");
 	public Button btnSiConfirmacionModificarAsignacion = new Button("Si");
 	public Button btnNoConfirmacionModificarAsignacion = new Button("No");
 
@@ -36,7 +36,7 @@ public class ModificarAsignacion
 
 	// ============================== DIALOGO NOTIFICACION ==================================
 	public Dialog dlgErrorModificarSeleccionarModificar = new Dialog(frmModificarAsignacionUno, "Error", true);
-	public Label lblErrorModificarSeleccionarModificar = new Label("Selecciona una Asignacion válido");
+	public Label lblErrorModificarSeleccionarModificar = new Label("Selecciona una Asignacion válida");
 	
 	// ============================= MODIFICAR DOS ====================================================
 	public Frame frmModificarAsignacionDos = new Frame("Modificar Asignacion");
@@ -68,7 +68,7 @@ public class ModificarAsignacion
 	
 	public void ventanaEdicionAsignacion() 
 	{
-		frmModificarAsignacionDos.setSize(300,300);
+		frmModificarAsignacionDos.setSize(300,200);
 		frmModificarAsignacionDos.setBackground(clFondo);
 		frmModificarAsignacionDos.setLayout(new FlowLayout());
 		frmModificarAsignacionDos.add(lblIdAsignacion);

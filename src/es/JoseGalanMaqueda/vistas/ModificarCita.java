@@ -39,7 +39,7 @@ public class ModificarCita
 
 	// ============================== DIALOGO NOTIFICACION ==================================
 	public Dialog dlgErrorModificarSeleccionarCita = new Dialog(frmModificarCitaUno, "Error", true);
-	public Label lblErrorModificarSeleccionarCita = new Label("Selecciona una cita válido");
+	public Label lblErrorModificarSeleccionarCita = new Label("Selecciona una cita válida");
 	
 	// ================================= MODIFICAR CITA DOS ===================================
 	public Frame frmModificarCitaDos = new Frame("Alta Citas");

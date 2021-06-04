@@ -413,3 +413,100 @@ from citas join clientes on citas.idClienteFK = clientes.idCliente;]
 where idTratamiento_Cita = 4;]
 [03/06/2021 22:30:28][admin][update tratamiento_citas set idCitaFK = 2, idTratamientoFK = 2
 where idTratamiento_Cita = 4;]
+[04/06/2021 12:34:33][admin][Acceso a Aplicación]
+[04/06/2021 12:34:34][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 12:38:28][basico][Acceso a Aplicación]
+[04/06/2021 12:38:28][basico][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 12:53:54][admin][Acceso a Aplicación]
+[04/06/2021 12:53:54][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 13:13:04][admin][SELECT * FROM clientes;]
+[04/06/2021 13:13:09][admin][SELECT * FROM clientes;]
+[04/06/2021 13:13:09][admin][Generacion PDF clientes]
+[04/06/2021 13:20:52][admin][SELECT * FROM tratamientos;]
+[04/06/2021 13:20:55][admin][SELECT * FROM tratamientos;]
+[04/06/2021 13:20:55][admin][Generacion PDF tratamientos]
+[04/06/2021 13:34:30][admin][DELETE FROM citas WHERE idCita = 29;]
+[04/06/2021 13:39:15][admin][Acceso a Aplicación]
+[04/06/2021 13:39:15][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 13:46:10][admin][Acceso a Aplicación]
+[04/06/2021 13:46:10][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 13:50:02][admin][Acceso a Aplicación]
+[04/06/2021 13:50:02][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 13:58:07][admin][UPDATE citas SET fechaCita = '2021-10-26',horaCita = '11:00', idClienteFK = 23 WHERE idCita = 28]
+[04/06/2021 14:05:03][admin][Acceso a Aplicación]
+[04/06/2021 14:05:03][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 14:05:05][admin][select citas.idCita, date_format(citas.fechaCita, '%d/%m/%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'
+from citas 
+	join clientes on citas.idClienteFK = clientes.idCliente
+order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d');]
+[04/06/2021 14:07:18][admin][select citas.idCita as id, date_format(citas.fechaCita, '%d/%m/%Y') as 'Fecha',  citas.horaCita as 'Hora', concat(concat(clientes.nombreCliente, ' '), clientes.apellidosCliente) as 'Nombre Clientes'
+from citas 
+	join clientes on citas.idClienteFK = clientes.idCliente
+order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'), id;]
+[04/06/2021 14:07:18][admin][Generacion PDF citas]
+[04/06/2021 14:22:28][admin][Acceso a Aplicación]
+[04/06/2021 14:22:28][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 14:25:32][admin][DELETE FROM tratamiento_citas WHERE idTratamiento_Cita = 26;]
+[04/06/2021 14:44:25][admin][Acceso a Aplicación]
+[04/06/2021 14:44:25][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 14:44:28][admin][SELECT tratamiento_citas.idTratamiento_Cita as 'Id', concat(concat('[ ', date_format(citas.fechaCita, '%d/%m/%Y')),' ', citas.horaCita, ' ]') as 'Fecha y Hora Cita', tratamientos.nombreTratamiento as 'Nombre Tratamiento'
+ FROM tratamiento_citas
+join citas on tratamiento_citas.idCitaFk = citas.idCita
+join tratamientos on tratamiento_citas.idTratamientoFK = tratamientos.idTratamiento
+order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'),id;]
+[04/06/2021 14:45:45][admin][Acceso a Aplicación]
+[04/06/2021 14:45:45][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 14:45:47][admin][SELECT tratamiento_citas.idTratamiento_Cita as 'Id', concat(concat('[ ', date_format(citas.fechaCita, '%d/%m/%Y')),' ', citas.horaCita, ' ]') as 'Fecha y Hora Cita', tratamientos.nombreTratamiento as 'Nombre Tratamiento'
+ FROM tratamiento_citas
+join citas on tratamiento_citas.idCitaFk = citas.idCita
+join tratamientos on tratamiento_citas.idTratamientoFK = tratamientos.idTratamiento
+order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'),id;]
+[04/06/2021 15:40:33][admin][Acceso a Aplicación]
+[04/06/2021 15:40:33][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 15:41:14][admin][Acceso a Aplicación]
+[04/06/2021 15:41:15][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 15:42:43][admin][Acceso a Aplicación]
+[04/06/2021 15:42:43][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 15:42:59][admin ][Acceso a Aplicación]
+[04/06/2021 15:42:59][admin ][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 15:43:00][admin ][Acceso a Aplicación]
+[04/06/2021 15:43:00][admin ][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 15:43:08][admin][Acceso a Aplicación]
+[04/06/2021 15:43:08][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 15:45:34][admin][update tratamiento_citas set idCitaFK = 28, idTratamientoFK = 4
+where idTratamiento_Cita = 24;]
+[04/06/2021 15:51:22][admin][Acceso a Aplicación]
+[04/06/2021 15:51:22][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 15:52:46][admin][update tratamiento_citas set idCitaFK = 28, idTratamientoFK = 4
+where idTratamiento_Cita = 24;]
+[04/06/2021 16:00:41][admin][Acceso a Aplicación]
+[04/06/2021 16:00:41][admin][select idCita as "Id", date_format(fechaCita, "%d/%m/%Y") as "Fecha", horaCita as "Hora", concat(clientes.nombreCliente, concat(" ", clientes.apellidosCliente)) as "Nombre Cliente" 
+from citas join clientes on citas.idClienteFK = clientes.idCliente;]
+[04/06/2021 16:00:43][admin][SELECT tratamiento_citas.idTratamiento_Cita as 'Id', concat(concat('[ ', date_format(citas.fechaCita, '%d/%m/%Y')),' ', citas.horaCita, ' ]') as 'Fecha y Hora Cita', tratamientos.nombreTratamiento as 'Nombre Tratamiento'
+ FROM tratamiento_citas
+join citas on tratamiento_citas.idCitaFk = citas.idCita
+join tratamientos on tratamiento_citas.idTratamientoFK = tratamientos.idTratamiento
+order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'),id;]
+[04/06/2021 16:02:27][admin][SELECT tratamiento_citas.idTratamiento_Cita as 'Id', concat(concat('[ ', date_format(citas.fechaCita, '%d/%m/%Y')),' ', citas.horaCita, ' ]') as 'Fecha y Hora Cita', tratamientos.nombreTratamiento as 'Nombre Tratamiento'
+ FROM tratamiento_citas
+join citas on tratamiento_citas.idCitaFk = citas.idCita
+join tratamientos on tratamiento_citas.idTratamientoFK = tratamientos.idTratamiento
+order by DATE_FORMAT(citas.fechaCita, '%Y'), DATE_FORMAT(citas.fechaCita, '%m'), DATE_FORMAT(citas.fechaCita, '%d'),id;]
+[04/06/2021 16:02:27][admin][Generacion PDF Asignaciones a Citas]

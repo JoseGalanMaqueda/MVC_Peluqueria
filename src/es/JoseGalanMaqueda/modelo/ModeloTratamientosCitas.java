@@ -113,7 +113,7 @@ public class ModeloTratamientosCitas
 			consultaAsignaciones.append("======================================\n");
 			while (rs.next()) 
 			{
-				consultaAsignaciones.append(rs.getInt("Id")+"\t\t"+rs.getString("Fecha y Hora Cita")+"\t\t"+rs.getString("Nombre Tratamiento")+"\n");
+				consultaAsignaciones.append(rs.getInt("Id")+"\t"+rs.getString("Fecha y Hora Cita")+"\t"+rs.getString("Nombre Tratamiento")+"\n");
 			}
 		}
 		catch (SQLException e) 
